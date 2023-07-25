@@ -3,9 +3,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:like_button/like_button.dart';
-import 'package:ruoyi_app/icon/ruoyi_icon.dart';
 
 import '../../api/system/user.dart';
+import '../../generated/l10n.dart';
 
 class MineIndex extends StatefulWidget {
   const MineIndex({Key? key}) : super(key: key);
@@ -17,11 +17,26 @@ class MineIndex extends StatefulWidget {
 class _MineIndexState extends State<MineIndex> {
   @override
   Widget build(BuildContext context) {
+    var roleGroup = GetStorage().read("roleGroup") ?? "";
+    if (roleGroup == "超级管理员") {
+      roleGroup = S.of(context).chaojiguanliyuan;
+    } else if (roleGroup == "会计") {
+      roleGroup = S.of(context).kuaiji;
+    } else if (roleGroup == "客户") {
+      roleGroup = S.of(context).kehu;
+    } else if (roleGroup == "销售") {
+      roleGroup = S.of(context).xiaoshou;
+    } else if (roleGroup == "经理") {
+      roleGroup = S.of(context).jingli;
+    } else if (roleGroup == "普通角色") {
+      roleGroup = S.of(context).putongjuese;
+    }
+
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: const Text(
-              "我的",
+            title: Text(
+              S.of(context).wode,
               style: TextStyle(color: Colors.black),
             ),
             backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -38,10 +53,10 @@ class _MineIndexState extends State<MineIndex> {
                         margin: EdgeInsets.only(),
                         height: 150,
                         color: Theme.of(context).colorScheme.secondary,
-                        padding: EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 40),
                         child: ListTile(
                           onTap: () async {
-                            ///TODO 跳转信息详情页
+                            //跳转信息详情页
                             var data = await getUserProfile().then((value) {
                               if (value.data["code"] == 200) {
                                 Get.toNamed("/home/info",
@@ -59,109 +74,20 @@ class _MineIndexState extends State<MineIndex> {
                             ),
                           ),
                           title: Text(
-                            //${SPUtil().get("name")}
-                            "用户名: ${GetStorage().read("userName") ?? ""}",
+                            "${S.of(context).yonghuming}${GetStorage().read("userName") ?? ""}",
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20),
                           ),
                           subtitle: Text(
-                            // SPUtil().get("name"),
-                            GetStorage().read("roleGroup") ?? "",
+                            roleGroup,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: const Icon(
                             Icons.keyboard_arrow_right,
                             color: Colors.white,
                           ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: const FractionalOffset(0.5, 0),
-                      child: Container(
-                        height: 120,
-                        margin: const EdgeInsets.fromLTRB(15, 120, 15, 0),
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        child: GridView.count(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 10.0,
-                          padding: const EdgeInsets.all(30.0),
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        const AlertDialog(
-                                          content: Text(
-                                            "QQ交流群:133713780",
-                                            style:
-                                                TextStyle(color: Colors.cyan),
-                                          ),
-                                        ));
-                              },
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: const [
-                                    Icon(
-                                      Icons.supervisor_account_rounded,
-                                      size: 40,
-                                      color: Colors.redAccent,
-                                    ),
-                                    Text("用户交流"),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SingleChildScrollView(
-                              child: Column(
-                                children: const [
-                                  Icon(
-                                    RuoYiIcons.service,
-                                    size: 40,
-                                    color: Colors.blue,
-                                  ),
-                                  Text("在线客服"),
-                                ],
-                              ),
-                            ),
-                            SingleChildScrollView(
-                              child: Column(
-                                children: const [
-                                  Icon(
-                                    RuoYiIcons.community,
-                                    size: 40,
-                                  ),
-                                  Text("反馈社区"),
-                                ],
-                              ),
-                            ),
-                            SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  LikeButton(
-                                    likeBuilder: (bool isLiked) {
-                                      return const Icon(
-                                        Icons.thumb_up_alt,
-                                        size: 40,
-                                        color: Colors.green,
-                                      );
-                                    },
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("点赞我们"),
-                                ],
-                              ),
-                            ),
-                            // const LikeButton()
-                          ],
                         ),
                       ),
                     ),
@@ -189,7 +115,7 @@ class _MineIndexState extends State<MineIndex> {
                                   color: Colors.blue,
                                 ),
                                 title: Text(
-                                  "编辑资料",
+                                  S.of(context).bianjiziliao,
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 trailing: Icon(Icons.keyboard_arrow_right),
@@ -197,42 +123,42 @@ class _MineIndexState extends State<MineIndex> {
                               Divider(
                                 thickness: 1,
                               ),
-                              ListTile(
-                                onTap: () async {
-                                  ///TODO 跳转常见问题页
-                                  await Get.toNamed("/home/help");
-                                },
-                                leading: Icon(
-                                  Icons.help_outline,
-                                  color: Colors.blue,
-                                ),
-                                title: Text(
-                                  "常见问题",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                trailing: Icon(Icons.keyboard_arrow_right),
-                              ),
-                              Divider(
-                                thickness: 1,
-                              ),
-                              ListTile(
-                                onTap: () async {
-                                  ///TODO 跳转关于我们页
-                                  await Get.toNamed("/home/about");
-                                },
-                                leading: Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.blue,
-                                ),
-                                title: Text(
-                                  "关于我们",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                trailing: Icon(Icons.keyboard_arrow_right),
-                              ),
-                              Divider(
-                                thickness: 1,
-                              ),
+                              // ListTile(
+                              //   onTap: () async {
+                              //     ///TODO 跳转常见问题页
+                              //     await Get.toNamed("/home/help");
+                              //   },
+                              //   leading: Icon(
+                              //     Icons.help_outline,
+                              //     color: Colors.blue,
+                              //   ),
+                              //   title: Text(
+                              //     "常见问题",
+                              //     style: TextStyle(fontSize: 16),
+                              //   ),
+                              //   trailing: Icon(Icons.keyboard_arrow_right),
+                              // ),
+                              // Divider(
+                              //   thickness: 1,
+                              // ),
+                              // ListTile(
+                              //   onTap: () async {
+                              //     ///TODO 跳转关于我们页
+                              //     await Get.toNamed("/home/about");
+                              //   },
+                              //   leading: Icon(
+                              //     Icons.favorite_border,
+                              //     color: Colors.blue,
+                              //   ),
+                              //   title: Text(
+                              //     "关于我们",
+                              //     style: TextStyle(fontSize: 16),
+                              //   ),
+                              //   trailing: Icon(Icons.keyboard_arrow_right),
+                              // ),
+                              // Divider(
+                              //   thickness: 1,
+                              // ),
                               ListTile(
                                 onTap: () async {
                                   ///TODO 跳转应用设置页
@@ -243,7 +169,7 @@ class _MineIndexState extends State<MineIndex> {
                                   color: Colors.blue,
                                 ),
                                 title: Text(
-                                  "应用设置",
+                                  S.of(context).yingyongshezhi,
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 trailing: Icon(Icons.keyboard_arrow_right),

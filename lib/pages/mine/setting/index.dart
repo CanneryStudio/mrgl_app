@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ruoyi_app/icon/ruoyi_icon.dart';
-import 'package:ruoyi_app/utils/sputils.dart';
 
+import '../../../generated/l10n.dart';
+import '../../../icon/ruoyi_icon.dart';
+import '../../../utils/sputils.dart';
 import '../../login.dart';
 
 class Settings extends StatefulWidget {
@@ -18,8 +19,8 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "应用设置",
+        title:  Text(
+          S.of(context).yingyongshezhi,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -32,7 +33,7 @@ class _SettingsState extends State<Settings> {
               height: 15,
             ),
             Container(
-              height: 210,
+              height: 60,
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
@@ -50,32 +51,32 @@ class _SettingsState extends State<Settings> {
                       Get.toNamed("/home/settings/pwdIndex");
                     },
                     leading: Icon(RuoYiIcons.password),
-                    title: Text("修改密码"),
+                    title: Text(S.of(context).xiugaimima),
                     trailing: Icon(Icons.keyboard_arrow_right),
                   ),
-                  Divider(),
-                  ListTile(
-                    onTap: () {
-                      Get.snackbar("已经是最新版本！", "");
-                    },
-                    leading: Icon(RuoYiIcons.refresh),
-                    title: Text("检查更新"),
-                    trailing: Icon(Icons.keyboard_arrow_right),
-                  ),
-                  Divider(),
-                  ListTile(
-                    onTap: () {
-                      Get.snackbar("清理成功", "");
-                      var token = GetStorage().read("token");
-                      GetStorage().erase();
-                      GetStorage().write("token", token);
-                      SPUtil().clean();
-                      SPUtil().setString("token", token);
-                    },
-                    leading: Icon(RuoYiIcons.clean),
-                    title: Text("清理缓存"),
-                    trailing: Icon(Icons.keyboard_arrow_right),
-                  ),
+                  // Divider(),
+                  // ListTile(
+                  //   onTap: () {
+                  //     Get.snackbar("已经是最新版本！", "");
+                  //   },
+                  //   leading: Icon(RuoYiIcons.refresh),
+                  //   title: Text(S.of(context).jianchagengxin),
+                  //   trailing: Icon(Icons.keyboard_arrow_right),
+                  // ),
+                  // Divider(),
+                  // ListTile(
+                  //   onTap: () {
+                  //     Get.snackbar("清理成功", "");
+                  //     var token = GetStorage().read("token");
+                  //     GetStorage().erase();
+                  //     GetStorage().write("token", token);
+                  //     SPUtil().clean();
+                  //     SPUtil().setString("token", token);
+                  //   },
+                  //   leading: Icon(RuoYiIcons.clean),
+                  //   title: Text("清理缓存"),
+                  //   trailing: Icon(Icons.keyboard_arrow_right),
+                  // ),
                 ],
               ),
             ),
@@ -91,18 +92,18 @@ class _SettingsState extends State<Settings> {
                               BorderRadius.all(Radius.circular(5.0))))),
                   onPressed: () {
                     Get.defaultDialog(
-                        title: "系统提示",
-                        middleText: "您确定要退出吗？",
-                        textCancel: "取消",
-                        textConfirm: "确定",
+                        title: S.of(context).xitongtishi,
+                        middleText: S.of(context).ninquedingyaotuichumang,
+                        textCancel: S.of(context).quxiao,
+                        textConfirm: S.of(context).queding,
                         onConfirm: () {
                           SPUtil().clean();
                           GetStorage().erase();
                           Get.offAll(() => const MyHome());
                         });
                   },
-                  child: const Text(
-                    "退出登录",
+                  child:  Text(
+                    S.of(context).tuichudenglu,
                     style: TextStyle(
                       color: Colors.black,
                     ),

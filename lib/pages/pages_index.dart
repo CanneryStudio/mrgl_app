@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ruoyi_app/pages/work/index.dart';
 
+import '../generated/l10n.dart';
 import 'home/index.dart';
 import 'mine/index.dart';
 
@@ -16,7 +16,6 @@ class _PageIndexState extends State<PageIndex> {
 
   final List _pageList = [
     const HomeIndex(),
-    const WorkIndex(),
     const MineIndex(),
   ];
 
@@ -31,10 +30,9 @@ class _PageIndexState extends State<PageIndex> {
             _index_current = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-          BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: "工作台"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "我的"),
+        items:  [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: S.of(context).dingdan),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: S.of(context).wode),
         ],
       ),
     );

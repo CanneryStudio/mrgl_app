@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../generated/l10n.dart';
+
 class Avatar extends StatefulWidget {
   const Avatar({Key? key}) : super(key: key);
 
@@ -12,8 +14,8 @@ class _AvatarState extends State<Avatar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "修改头像",
+        title:  Text(
+          S.of(context).xiugaitouxiang,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明

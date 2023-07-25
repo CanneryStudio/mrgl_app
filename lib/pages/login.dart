@@ -4,9 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
-import 'package:ruoyi_app/icon/ruoyi_icon.dart';
 
 import '../api/login.dart';
+import '../generated/l10n.dart';
+import '../icon/ruoyi_icon.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({Key? key}) : super(key: key);
@@ -15,8 +16,8 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "登录",
+          title:  Text(
+            S.of(context).denglu,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -108,10 +109,10 @@ class _LoginIndexState extends State<LoginIndex> {
                   onChanged: (value) {
                     username = value;
                   },
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     icon: Icon(RuoYiIcons.user),
                     border: InputBorder.none,
-                    hintText: "请输入用户名 ",
+                    hintText: S.of(context).qingshuruyonghuming,
                   ),
                 ),
               ),
@@ -129,10 +130,10 @@ class _LoginIndexState extends State<LoginIndex> {
                   onChanged: (value) {
                     password = value;
                   },
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     icon: Icon(RuoYiIcons.password),
                     border: InputBorder.none,
-                    hintText: "请输入密码 ",
+                    hintText: S.of(context).qingshurumima,
                   ),
                 ),
               ),
@@ -157,10 +158,10 @@ class _LoginIndexState extends State<LoginIndex> {
                               code = value;
                             },
                             keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
+                            decoration:  InputDecoration(
                               icon: Icon(RuoYiIcons.code),
                               border: InputBorder.none,
-                              hintText: "请输入验证码 ",
+                              hintText: S.of(context).qingshuruyanzhengma,
                             ),
                           )),
                       Expanded(
@@ -252,8 +253,8 @@ class _LoginIndexState extends State<LoginIndex> {
                         getImg();
                       }
                     },
-                    child: const Text(
-                      "登录",
+                    child:  Text(
+                      S.of(context).login,
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -261,38 +262,6 @@ class _LoginIndexState extends State<LoginIndex> {
                   )),
               const SizedBox(
                 height: 10,
-              ),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                      text: "登录即代表同意",
-                      style: const TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(
-                          text: "《用户协议》",
-                          style: const TextStyle(color: Colors.red),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Get.toNamed("/login/webView", arguments: {
-                                "title": "用户服务协议",
-                                "url": "https://ruoyi.vip/protocol.html"
-                              });
-                            },
-                        ),
-                        TextSpan(
-                          text: "《用户隐私》",
-                          style:
-                              TextStyle(color: Theme.of(context).colorScheme.secondary),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Get.toNamed("/login/webView", arguments: {
-                                "title": "隐私政策",
-                                "url": "https://ruoyi.vip/protocol.html"
-                              });
-                            },
-                        ),
-                      ]),
-                ),
               ),
             ],
           ),
@@ -312,8 +281,8 @@ class LogInIcon extends StatelessWidget {
       leading: Image.asset(
         "static/logo.png",
       ),
-      title: const Text(
-        "莫日格勒登录",
+      title: Text(
+        S.current.topLoginText,
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w300,

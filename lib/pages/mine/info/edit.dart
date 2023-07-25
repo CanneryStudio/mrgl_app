@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ruoyi_app/api/system/user.dart';
+
+import '../../../api/system/user.dart';
+import '../../../generated/l10n.dart';
 
 class UserEdit extends StatefulWidget {
   const UserEdit({Key? key}) : super(key: key);
@@ -27,8 +29,8 @@ class _UserEditState extends State<UserEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "修改资料",
+        title:  Text(
+          S.of(context).xiugaiziliao,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -49,8 +51,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "用户昵称",
-
+                        S.of(context).yonghunicheng,
                       ),
                     )),
                 Expanded(
@@ -76,9 +77,9 @@ class _UserEditState extends State<UserEdit> {
                                         ["nickName"]
                                             .length))),
                           ),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: "请输入昵称",
+                            hintText: S.of(context).qingshurunicheng,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -100,8 +101,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "手机号码",
-
+                        S.of(context).shoujihaoma,
                       ),
                     )),
                 Expanded(
@@ -127,9 +127,9 @@ class _UserEditState extends State<UserEdit> {
                                         ["phonenumber"]
                                             .length))),
                           ),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                               border: InputBorder.none,
-                              hintText: "请输入手机号",
+                              hintText: S.of(context).qingshurushoujihao,
                               hintStyle: TextStyle(fontSize: 14)),
                         ),
                       ),
@@ -141,7 +141,7 @@ class _UserEditState extends State<UserEdit> {
             height: 15,
           ),
           Container(
-            height: 40,
+            height: 80,
             child: Flex(
               direction: Axis.horizontal,
               children: [
@@ -150,8 +150,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "邮箱",
-
+                        S.of(context).youxiang,
                       ),
                     )),
                 Expanded(
@@ -176,9 +175,9 @@ class _UserEditState extends State<UserEdit> {
                                         offset: details["arg"]["data"]["email"]
                                             .length))),
                           ),
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                               border: InputBorder.none,
-                              hintText: "请输入邮箱",
+                              hintText: S.of(context).qingshuruyouxiang,
                               hintStyle: TextStyle(fontSize: 14)),
                         ),
                       ),
@@ -199,7 +198,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "性别",
+                        S.of(context).xingbie,
                       ),
                     )),
                 Expanded(
@@ -245,8 +244,8 @@ class _UserEditState extends State<UserEdit> {
                             ));
                   }
                 },
-                child: const Text(
-                  "提交",
+                child:  Text(
+                  S.of(context).tijiao,
                   style: TextStyle(
                     color: Colors.black,
                   ),

@@ -38,7 +38,7 @@ class _UserIndexState extends State<UserIndex> {
                 DataColumn(label: Text('创建时间')),
                 DataColumn(label: Text('操作')),
               ],
-              rows: [
+              rows: const [
                 DataRow(cells: [
                   DataCell(Text('1')),
                   DataCell(Text('admin')),

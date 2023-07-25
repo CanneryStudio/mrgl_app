@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ruoyi_app/api/login.dart';
-import 'package:ruoyi_app/api/system/user.dart';
 import 'package:ruoyi_app/routes/app_pages.dart';
+
+import 'Application.dart';
+import 'api/login.dart';
+import 'api/system/user.dart';
+import 'generated/l10n.dart';
 
 void main() {
   // ignore: invalid_use_of_visible_for_testing_member
-
-  runApp(MyApp());
+  Application.init().then((value) => runApp(const MyApp()));
 }
 
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,12 @@ class MyApp extends StatelessWidget {
 
       ///国际化 自定义配置 目前配置了 英语和中文
       localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
       ],
-      supportedLocales: const [Locale("en", "US"), Locale("zh", "CN")],
+      supportedLocales: S.delegate.supportedLocales,
 
       initialRoute: GetStorage().read("initialRoute"),
       getPages: AppPages.routes,

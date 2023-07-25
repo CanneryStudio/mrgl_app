@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../generated/l10n.dart';
+
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
 
@@ -12,9 +14,9 @@ class _AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "关于我们",
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          S.of(context).aboutUs,
+          style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
         shadowColor: Colors.transparent,
@@ -33,12 +35,12 @@ class _AboutState extends State<About> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        Image.asset(
-                          "static/logo200.png",
-                          width: 100,
-                        ),
-                        const Text(
-                          "莫日格勒移动端",
+                        // Image.asset(
+                        //   "static/logo200.png",
+                        //   width: 100,
+                        // ),
+                         Text(
+                          S.of(context).morigeleyidongduan,
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
@@ -67,36 +69,9 @@ class _AboutState extends State<About> {
                                   width: 1,
                                   color: Color.fromRGBO(241, 241, 241, 1)))),
                       child: ListTile(
-                        title: const Text(
-                          "版本信息",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w300),
-                        ),
-                        trailing: RichText(
-                          text: const TextSpan(
-                            children: [
-                              WidgetSpan(
-                                  child: Text(
-                                "v1.0.0",
-                                style: TextStyle(fontSize: 16),
-                              )),
-                              WidgetSpan(
-                                  child: Icon(Icons.keyboard_arrow_right))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 1,
-                                  color: Color.fromRGBO(241, 241, 241, 1)))),
-                      child: ListTile(
                         onTap: () {},
-                        title: const Text(
-                          "官方邮箱",
+                        title:  Text(
+                          S.of(context).fuwurexian,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w300),
                         ),
@@ -105,35 +80,7 @@ class _AboutState extends State<About> {
                             children: [
                               WidgetSpan(
                                   child: Text(
-                                "ruoyi@xx.com",
-                                style: TextStyle(fontSize: 16),
-                              )),
-                              WidgetSpan(
-                                  child: Icon(Icons.keyboard_arrow_right))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 1,
-                                  color: Color.fromRGBO(241, 241, 241, 1)))),
-                      child: ListTile(
-                        onTap: () {},
-                        title: const Text(
-                          "服务热线",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w300),
-                        ),
-                        trailing: RichText(
-                          text: const TextSpan(
-                            children: [
-                              WidgetSpan(
-                                  child: Text(
-                                "400-999-9999",
+                                "10086",
                                 style: TextStyle(fontSize: 16),
                               )),
                               WidgetSpan(
@@ -161,7 +108,7 @@ class _AboutState extends State<About> {
                             children: [
                               WidgetSpan(
                                   child: Text(
-                                "http://ruoyi.vip",
+                                "http://morigele.com",
                                 style: TextStyle(fontSize: 16),
                               )),
                               WidgetSpan(
@@ -174,9 +121,6 @@ class _AboutState extends State<About> {
                   ],
                 ),
               ),
-            ),
-            const ListTile(
-              subtitle: Text("Copyright @ 2022 ruoyi.vip All Rights Reserved."),
             ),
           ],
         ),

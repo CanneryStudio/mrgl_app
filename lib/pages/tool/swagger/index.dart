@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../generated/l10n.dart';
+
 class SwaggerIndex extends StatefulWidget {
   const SwaggerIndex({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class _SwaggerIndexState extends State<SwaggerIndex> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "系统接口",
+          S.of(context).xitongjiekou,
           style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../api/system/user.dart';
+import '../../../generated/l10n.dart';
 
 class PWDIndex extends StatefulWidget {
   const PWDIndex({Key? key}) : super(key: key);
@@ -19,8 +20,8 @@ class _PWDIndexState extends State<PWDIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "修改密码",
+        title:  Text(
+          S.of(context).xiugaimima,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -41,7 +42,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "旧密码",
+                        S.of(context).jiumima,
                       ),
                     )),
                 Expanded(
@@ -60,9 +61,9 @@ class _PWDIndexState extends State<PWDIndex> {
                             });
                           },
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: "请输入旧密码",
+                            hintText: S.of(context).qingshurujiumima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -84,7 +85,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "新密码",
+                        S.of(context).xinmima,
                       ),
                     )),
                 Expanded(
@@ -103,9 +104,9 @@ class _PWDIndexState extends State<PWDIndex> {
                             });
                           },
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: "请输入新密码",
+                            hintText: S.of(context).qingshuruxinmima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -127,7 +128,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "新密码",
+                        S.of(context).xinmima,
                       ),
                     )),
                 Expanded(
@@ -146,9 +147,9 @@ class _PWDIndexState extends State<PWDIndex> {
                             });
                           },
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: "请输入新密码",
+                            hintText: S.of(context).qingshuruxinmima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),

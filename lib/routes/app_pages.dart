@@ -1,14 +1,11 @@
 import 'package:get/route_manager.dart';
-import 'package:ruoyi_app/pages/common/webview/index.dart';
-import 'package:ruoyi_app/pages/login.dart';
-import 'package:ruoyi_app/pages/mine/about/index.dart';
-import 'package:ruoyi_app/pages/mine/help/details.dart';
-import 'package:ruoyi_app/pages/mine/help/index.dart';
-import 'package:ruoyi_app/pages/mine/info/edit.dart';
-import 'package:ruoyi_app/pages/mine/info/index.dart';
-import 'package:ruoyi_app/pages/system/role/index.dart';
-import 'package:ruoyi_app/pages/tool/swagger/index.dart';
-
+import '../pages/common/webview/index.dart';
+import '../pages/login.dart';
+import '../pages/mine/about/index.dart';
+import '../pages/mine/help/details.dart';
+import '../pages/mine/help/index.dart';
+import '../pages/mine/info/edit.dart';
+import '../pages/mine/info/index.dart';
 import '../pages/mine/pwd/index.dart';
 import '../pages/mine/setting/index.dart';
 import '../pages/pages_index.dart';
@@ -18,7 +15,9 @@ import '../pages/system/dict/index.dart';
 import '../pages/system/menu/index.dart';
 import '../pages/system/notice/index.dart';
 import '../pages/system/post/index.dart';
+import '../pages/system/role/index.dart';
 import '../pages/system/user/index.dart';
+import '../pages/tool/swagger/index.dart';
 import 'app_routes.dart';
 
 class AppPages {

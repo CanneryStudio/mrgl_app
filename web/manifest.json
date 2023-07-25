@@ -1,5 +1,5 @@
 {
-    "name": "ruoyi_app",
+    "topLoginText": "ruoyi_app",
     "short_name": "ruoyi_app",
     "start_url": ".",
     "display": "standalone",
