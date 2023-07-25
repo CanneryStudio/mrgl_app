@@ -10,57 +10,59 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+      
+    - name: Install Flutter dependencies
+      run: flutter pub get
 
-      - name: Setup Flutter
-        uses: codemagic-actions/flutter-action@v1
-        with:
-          flutter-version: '2.8.1' # replace with your required Flutter version
-
-      - name: Build Flutter App for Android
-        run: |
-          flutter pub get
-          flutter build apk --release
-
-      - name: Sign Android Release
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: build/app/outputs/flutter-apk
-          signingKeyBase64: ${{ secrets.KEYSTORE_FILE }}
-          alias: ${{ secrets.KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: build/app/outputs/flutter-apk/app-release.apk
-          asset_name: app-release.apk
-          asset_content_type: application/vnd.android.package-archive
+    - name: Build Flutter App for Android
+      run: flutter build apk --release
+      
+    - name: Sign Android Release
+      uses: r0adkll/sign-android-release@v1
+      with:
+        releaseDirectory: build/app/outputs/flutter-apk
+        signingKeyBase64: ${{ secrets.KEYSTORE_FILE }}
+        alias: ${{ secrets.KEY_ALIAS }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+      
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/app/outputs/flutter-apk/app-release.apk
+        asset_name: app-release.apk
+        asset_content_type: application/vnd.android.package-archive
 
   build-and-release-ios:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+      
+    - name: Install Flutter dependencies
+      run: flutter pub get
 
-      - name: Setup Flutter
-        uses: codemagic-actions/flutter-action@v1
-        with:
-          flutter-version: '2.8.1' # replace with your required Flutter version
+    - name: Build Flutter App for iOS
+      run: flutter build ios --release --no-codesign
 
-      - name: Build Flutter App for iOS
-        run: |
-          flutter pub get
-          flutter build ios --release --no-codesign
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: build/ios/iphoneos/Runner.ipa
-          asset_name: Runner.ipa
-          asset_content_type: application/octet-stream
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/ios/iphoneos/Runner.ipa
+        asset_name: Runner.ipa
+        asset_content_type: application/octet-stream
