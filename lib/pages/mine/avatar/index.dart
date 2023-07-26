@@ -15,7 +15,7 @@ class _AvatarState extends State<Avatar> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).xiugaitouxiang,
+          S.current.xiugaitouxiang,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明

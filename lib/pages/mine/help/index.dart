@@ -16,7 +16,7 @@ class _HelpState extends State<Help> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).changjianwenti,
+          S.current.changjianwenti,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明

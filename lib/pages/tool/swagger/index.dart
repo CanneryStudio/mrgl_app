@@ -16,7 +16,7 @@ class _SwaggerIndexState extends State<SwaggerIndex> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).xitongjiekou,
+          S.current.xitongjiekou,
           style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明

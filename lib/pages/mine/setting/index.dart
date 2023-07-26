@@ -20,7 +20,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).yingyongshezhi,
+          S.current.yingyongshezhi,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -51,7 +51,7 @@ class _SettingsState extends State<Settings> {
                       Get.toNamed("/home/settings/pwdIndex");
                     },
                     leading: Icon(RuoYiIcons.password),
-                    title: Text(S.of(context).xiugaimima),
+                    title: Text(S.current.xiugaimima),
                     trailing: Icon(Icons.keyboard_arrow_right),
                   ),
                   // Divider(),
@@ -60,7 +60,7 @@ class _SettingsState extends State<Settings> {
                   //     Get.snackbar("已经是最新版本！", "");
                   //   },
                   //   leading: Icon(RuoYiIcons.refresh),
-                  //   title: Text(S.of(context).jianchagengxin),
+                  //   title: Text(S.current.jianchagengxin),
                   //   trailing: Icon(Icons.keyboard_arrow_right),
                   // ),
                   // Divider(),
@@ -92,10 +92,10 @@ class _SettingsState extends State<Settings> {
                               BorderRadius.all(Radius.circular(5.0))))),
                   onPressed: () {
                     Get.defaultDialog(
-                        title: S.of(context).xitongtishi,
-                        middleText: S.of(context).ninquedingyaotuichumang,
-                        textCancel: S.of(context).quxiao,
-                        textConfirm: S.of(context).queding,
+                        title: S.current.xitongtishi,
+                        middleText: S.current.ninquedingyaotuichumang,
+                        textCancel: S.current.quxiao,
+                        textConfirm: S.current.queding,
                         onConfirm: () {
                           SPUtil().clean();
                           GetStorage().erase();
@@ -103,7 +103,7 @@ class _SettingsState extends State<Settings> {
                         });
                   },
                   child:  Text(
-                    S.of(context).tuichudenglu,
+                    S.current.tuichudenglu,
                     style: TextStyle(
                       color: Colors.black,
                     ),

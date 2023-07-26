@@ -46,7 +46,7 @@ class _HomeIndexState extends State<HomeIndex> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).dingdanliebiao,
+        title: Text(S.current.dingdanliebiao,
             style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
@@ -59,7 +59,7 @@ class _HomeIndexState extends State<HomeIndex> {
             return Card(
               margin: EdgeInsets.all(8),
               child: ListTile(
-                title: Text(S.of(context).dingdanhao + "${row.orderId}",
+                title: Text(S.current.dingdanhao + "${row.orderId}",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 onTap: () {
                   // 当用户点击列表项时，跳转到订单详情页
@@ -119,7 +119,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).dingdanxiangqing,
+        title: Text(S.current.dingdanxiangqing,
             style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
@@ -127,7 +127,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: <Widget>[
-            Text(S.of(context).dingdanxinxi,
+            Text(S.current.dingdanxinxi,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Card(
               child: Padding(
@@ -135,56 +135,56 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(S.of(context).dingdanhao + '${widget.order.orderId}',
+                    Text(S.current.dingdanhao + '${widget.order.orderId}',
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 16),
                     //客户名称
-                    Text(S.of(context).kehu + '${widget.order.customerName}',
+                    Text(S.current.kehu + '${widget.order.customerName}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     Text(
-                        S.of(context).xiaoshouyuan +
+                        S.current.xiaoshouyuan +
                             '${widget.order.salesmanName}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
-                    Text(S.of(context).chuangjianshijian + '${widget.order.createData}',
+                    Text(S.current.chuangjianshijian + '${widget.order.createData}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     //是否确认
                     if (widget.order.confirm == 0)
-                      Text(S.of(context).shifouqueren + S.of(context).weiqueren,
+                      Text(S.current.shifouqueren + S.current.weiqueren,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     if (widget.order.confirm == 1)
-                      Text(S.of(context).shifouqueren + S.of(context).yiqueren,
+                      Text(S.current.shifouqueren + S.current.yiqueren,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 16),
-                    Text(S.of(context).shangpin + '${widget.order.goods}',
+                    Text(S.current.shangpin + '${widget.order.goods}',
                         style: TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
-                    Text(S.of(context).zongjia + '${widget.order.totalPrices}',
+                    Text(S.current.zongjia + '${widget.order.totalPrices}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     //订单进度
                     if (widget.order.paymentSchedule == 0)
-                      Text(S.of(context).dingdanjindu + S.of(context).weifukuan,
+                      Text(S.current.dingdanjindu + S.current.weifukuan,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     if (widget.order.paymentSchedule == 1)
-                      Text(S.of(context).dingdanjindu + S.of(context).yifukuan,
+                      Text(S.current.dingdanjindu + S.current.yifukuan,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     if (widget.order.paymentSchedule == 2)
                       Text(
-                          S.of(context).dingdanjindu + S.of(context).yiwancheng,
+                          S.current.dingdanjindu + S.current.yiwancheng,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
                     ElevatedButton(
                       onPressed: _confirmOrder,
-                      child: Text(S.of(context).querendingdan),
+                      child: Text(S.current.querendingdan),
                     ),
                   ],
                 ),
@@ -192,7 +192,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              S.of(context).wuliuxinxi,
+              S.current.wuliuxinxi,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
@@ -216,35 +216,35 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(S.of(context).fahuodi + row.dispatch,
+                              Text(S.current.fahuodi + row.dispatch,
                                   style: const TextStyle(fontSize: 16)),
                               const SizedBox(height: 8),
-                              Text(S.of(context).genzong + row.track,
+                              Text(S.current.genzong + row.track,
                                   style: const TextStyle(fontSize: 16)),
                               const SizedBox(height: 8),
                               Text(
-                                  S.of(context).wupinneirong + row.contentGoods,
+                                  S.current.wupinneirong + row.contentGoods,
                                   style: const TextStyle(fontSize: 16)),
                               const SizedBox(height: 8),
                               if (row.progressState == 0)
                                 Text(
-                                    S.of(context).dangqianjindu +
-                                        S.of(context).zhengzaichuku,
+                                    S.current.dangqianjindu +
+                                        S.current.zhengzaichuku,
                                     style: const TextStyle(fontSize: 16)),
                               if (row.progressState == 1)
                                 Text(
-                                    S.of(context).dangqianjindu +
-                                        S.of(context).dengdailanshou,
+                                    S.current.dangqianjindu +
+                                        S.current.dengdailanshou,
                                     style: const TextStyle(fontSize: 16)),
                               if (row.progressState == 2)
                                 Text(
-                                    S.of(context).dangqianjindu +
-                                        S.of(context).zhengzaiyunshu,
+                                    S.current.dangqianjindu +
+                                        S.current.zhengzaiyunshu,
                                     style: const TextStyle(fontSize: 16)),
                               if (row.progressState == 3)
                                 Text(
-                                    S.of(context).dangqianjindu +
-                                        S.of(context).yididamudidi,
+                                    S.current.dangqianjindu +
+                                        S.current.yididamudidi,
                                     style: const TextStyle(fontSize: 16)),
                             ],
                           ),

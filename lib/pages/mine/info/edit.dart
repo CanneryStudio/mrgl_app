@@ -30,7 +30,7 @@ class _UserEditState extends State<UserEdit> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).xiugaiziliao,
+          S.current.xiugaiziliao,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -51,7 +51,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).yonghunicheng,
+                        S.current.yonghunicheng,
                       ),
                     )),
                 Expanded(
@@ -79,7 +79,7 @@ class _UserEditState extends State<UserEdit> {
                           ),
                           decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).qingshurunicheng,
+                            hintText: S.current.qingshurunicheng,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -101,7 +101,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).shoujihaoma,
+                        S.current.shoujihaoma,
                       ),
                     )),
                 Expanded(
@@ -129,7 +129,7 @@ class _UserEditState extends State<UserEdit> {
                           ),
                           decoration:  InputDecoration(
                               border: InputBorder.none,
-                              hintText: S.of(context).qingshurushoujihao,
+                              hintText: S.current.qingshurushoujihao,
                               hintStyle: TextStyle(fontSize: 14)),
                         ),
                       ),
@@ -150,7 +150,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).youxiang,
+                        S.current.youxiang,
                       ),
                     )),
                 Expanded(
@@ -177,7 +177,7 @@ class _UserEditState extends State<UserEdit> {
                           ),
                           decoration:  InputDecoration(
                               border: InputBorder.none,
-                              hintText: S.of(context).qingshuruyouxiang,
+                              hintText: S.current.qingshuruyouxiang,
                               hintStyle: TextStyle(fontSize: 14)),
                         ),
                       ),
@@ -198,7 +198,7 @@ class _UserEditState extends State<UserEdit> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).xingbie,
+                        S.current.xingbie,
                       ),
                     )),
                 Expanded(
@@ -245,7 +245,7 @@ class _UserEditState extends State<UserEdit> {
                   }
                 },
                 child:  Text(
-                  S.of(context).tijiao,
+                  S.current.tijiao,
                   style: TextStyle(
                     color: Colors.black,
                   ),

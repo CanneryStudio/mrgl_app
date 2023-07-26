@@ -17,22 +17,22 @@ class _InfoIndexState extends State<InfoIndex> {
 
     var data = details["args"]["roleGroup"] ?? "";
     if (data == "超级管理员") {
-      data = S.of(context).chaojiguanliyuan;
+      data = S.current.chaojiguanliyuan;
     } else if (data == "会计") {
-      data = S.of(context).kuaiji;
+      data = S.current.kuaiji;
     } else if (data == "客户") {
-      data = S.of(context).kehu;
+      data = S.current.kehu;
     } else if (data == "销售") {
-      data = S.of(context).xiaoshou;
+      data = S.current.xiaoshou;
     } else if (data == "经理") {
-      data = S.of(context).jingli;
+      data = S.current.jingli;
     } else if (data == "普通角色") {
-      data = S.of(context).putongjuese;
+      data = S.current.putongjuese;
     }
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).gerenxinxi,
+          S.current.gerenxinxi,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -51,7 +51,7 @@ class _InfoIndexState extends State<InfoIndex> {
               )),
               child: ListTile(
                 leading: const Icon(Icons.person),
-                title:  Text(S.of(context).nicheng),
+                title:  Text(S.current.nicheng),
                 trailing: Text(details["args"]["data"]["nickName"] ?? ""),
               ),
             ),
@@ -65,7 +65,7 @@ class _InfoIndexState extends State<InfoIndex> {
               )),
               child: ListTile(
                 leading: const Icon(Icons.phone),
-                title:  Text(S.of(context).shoujihaoma),
+                title:  Text(S.current.shoujihaoma),
                 trailing: Text(details["args"]["data"]["phonenumber"] ?? ""),
               ),
             ),
@@ -79,7 +79,7 @@ class _InfoIndexState extends State<InfoIndex> {
               )),
               child: ListTile(
                 leading: const Icon(Icons.email),
-                title:  Text(S.of(context).youxiang),
+                title:  Text(S.current.youxiang),
                 trailing: Text(details["args"]["data"]["email"] ?? ""),
               ),
             ),
@@ -93,7 +93,7 @@ class _InfoIndexState extends State<InfoIndex> {
             //   )),
             //   child: ListTile(
             //     leading: const Icon(Icons.tune),
-            //     title:  Text(S.of(context).bumen),
+            //     title:  Text(S.current.bumen),
             //     trailing:
             //         Text(details["args"]["data"]["dept"]?["deptName"] ?? ""),
             //   ),
@@ -108,7 +108,7 @@ class _InfoIndexState extends State<InfoIndex> {
             //   )),
             //   child: ListTile(
             //     leading: const Icon(Icons.how_to_reg),
-            //     title:  Text(S.of(context).gangwei),
+            //     title:  Text(S.current.gangwei),
             //     trailing: Text(details["args"]["postGroup"] ?? ""),
             //   ),
             // ),
@@ -122,7 +122,7 @@ class _InfoIndexState extends State<InfoIndex> {
               )),
               child: ListTile(
                 leading: const Icon(Icons.people),
-                title:  Text(S.of(context).juese),
+                title:  Text(S.current.juese),
                 trailing: Text(data),
               ),
             ),

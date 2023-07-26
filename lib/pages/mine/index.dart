@@ -19,24 +19,24 @@ class _MineIndexState extends State<MineIndex> {
   Widget build(BuildContext context) {
     var roleGroup = GetStorage().read("roleGroup") ?? "";
     if (roleGroup == "超级管理员") {
-      roleGroup = S.of(context).chaojiguanliyuan;
+      roleGroup = S.current.chaojiguanliyuan;
     } else if (roleGroup == "会计") {
-      roleGroup = S.of(context).kuaiji;
+      roleGroup = S.current.kuaiji;
     } else if (roleGroup == "客户") {
-      roleGroup = S.of(context).kehu;
+      roleGroup = S.current.kehu;
     } else if (roleGroup == "销售") {
-      roleGroup = S.of(context).xiaoshou;
+      roleGroup = S.current.xiaoshou;
     } else if (roleGroup == "经理") {
-      roleGroup = S.of(context).jingli;
+      roleGroup = S.current.jingli;
     } else if (roleGroup == "普通角色") {
-      roleGroup = S.of(context).putongjuese;
+      roleGroup = S.current.putongjuese;
     }
 
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
             title: Text(
-              S.of(context).wode,
+              S.current.wode,
               style: TextStyle(color: Colors.black),
             ),
             backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -74,7 +74,7 @@ class _MineIndexState extends State<MineIndex> {
                             ),
                           ),
                           title: Text(
-                            "${S.of(context).yonghuming}${GetStorage().read("userName") ?? ""}",
+                            "${S.current.yonghuming}${GetStorage().read("userName") ?? ""}",
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
@@ -115,7 +115,7 @@ class _MineIndexState extends State<MineIndex> {
                                   color: Colors.blue,
                                 ),
                                 title: Text(
-                                  S.of(context).bianjiziliao,
+                                  S.current.bianjiziliao,
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 trailing: Icon(Icons.keyboard_arrow_right),
@@ -169,7 +169,7 @@ class _MineIndexState extends State<MineIndex> {
                                   color: Colors.blue,
                                 ),
                                 title: Text(
-                                  S.of(context).yingyongshezhi,
+                                  S.current.yingyongshezhi,
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 trailing: Icon(Icons.keyboard_arrow_right),

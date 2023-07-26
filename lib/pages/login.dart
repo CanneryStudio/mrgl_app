@@ -11,13 +11,12 @@ import '../icon/ruoyi_icon.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title:  Text(
-            S.of(context).denglu,
+            S.current.denglu,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -112,7 +111,7 @@ class _LoginIndexState extends State<LoginIndex> {
                   decoration:  InputDecoration(
                     icon: Icon(RuoYiIcons.user),
                     border: InputBorder.none,
-                    hintText: S.of(context).qingshuruyonghuming,
+                    hintText: S.current.qingshuruyonghuming,
                   ),
                 ),
               ),
@@ -133,7 +132,7 @@ class _LoginIndexState extends State<LoginIndex> {
                   decoration:  InputDecoration(
                     icon: Icon(RuoYiIcons.password),
                     border: InputBorder.none,
-                    hintText: S.of(context).qingshurumima,
+                    hintText: S.current.qingshurumima,
                   ),
                 ),
               ),
@@ -161,7 +160,7 @@ class _LoginIndexState extends State<LoginIndex> {
                             decoration:  InputDecoration(
                               icon: Icon(RuoYiIcons.code),
                               border: InputBorder.none,
-                              hintText: S.of(context).qingshuruyanzhengma,
+                              hintText: S.current.qingshuruyanzhengma,
                             ),
                           )),
                       Expanded(
@@ -254,7 +253,7 @@ class _LoginIndexState extends State<LoginIndex> {
                       }
                     },
                     child:  Text(
-                      S.of(context).login,
+                      S.current.login,
                       style: TextStyle(
                         color: Colors.black,
                       ),

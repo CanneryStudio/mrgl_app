@@ -5,7 +5,7 @@ import 'package:ruoyi_app/utils/sputils.dart';
 
 /// dio网络请求配置表 自定义
 class DioConfig {
-  static const baseURL = "http://192.168.31.139:8088/"; //域名
+  static const baseURL = "http://192.168.31.139:8089/"; //域名
   static const timeout = 10000; //超时时间
 }
 

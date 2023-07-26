@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
+import 'package:ruoyi_app/pages/login.dart';
 import 'package:ruoyi_app/routes/app_pages.dart';
 
 import 'Application.dart';
@@ -9,9 +11,10 @@ import 'api/login.dart';
 import 'api/system/user.dart';
 import 'generated/l10n.dart';
 
-void main() {
-  // ignore: invalid_use_of_visible_for_testing_member
-  Application.init().then((value) => runApp(const MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Application.init();
+  runApp(const MyApp());
 }
 
 // ignore: must_be_immutable
@@ -20,23 +23,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Intl.defaultLocale = 'en';
     GetStorage().write(
         "initialRoute",
         GetStorage().hasData("token")
             ? AppPages.INITIAL
             : AppPages.INITIALLOGIN);
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.fade,
-
-      ///国际化 自定义配置 目前配置了 英语和中文
-      localizationsDelegates: const [
+      localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.fade,
 
       initialRoute: GetStorage().read("initialRoute"),
       getPages: AppPages.routes,

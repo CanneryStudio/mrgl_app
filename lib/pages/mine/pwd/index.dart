@@ -21,7 +21,7 @@ class _PWDIndexState extends State<PWDIndex> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          S.of(context).xiugaimima,
+          S.current.xiugaimima,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -42,7 +42,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).jiumima,
+                        S.current.jiumima,
                       ),
                     )),
                 Expanded(
@@ -63,7 +63,7 @@ class _PWDIndexState extends State<PWDIndex> {
                           obscureText: true,
                           decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).qingshurujiumima,
+                            hintText: S.current.qingshurujiumima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -85,7 +85,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).xinmima,
+                        S.current.xinmima,
                       ),
                     )),
                 Expanded(
@@ -106,7 +106,7 @@ class _PWDIndexState extends State<PWDIndex> {
                           obscureText: true,
                           decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).qingshuruxinmima,
+                            hintText: S.current.qingshuruxinmima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),
@@ -128,7 +128,7 @@ class _PWDIndexState extends State<PWDIndex> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        S.of(context).xinmima,
+                        S.current.xinmima,
                       ),
                     )),
                 Expanded(
@@ -149,7 +149,7 @@ class _PWDIndexState extends State<PWDIndex> {
                           obscureText: true,
                           decoration:  InputDecoration(
                             border: InputBorder.none,
-                            hintText: S.of(context).qingshuruxinmima,
+                            hintText: S.current.qingshuruxinmima,
                             hintStyle: TextStyle(fontSize: 14),
                           ),
                         ),

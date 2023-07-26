@@ -15,7 +15,7 @@ class _AboutState extends State<About> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).aboutUs,
+          S.current.aboutUs,
           style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent, // 背景颜色设置为透明
@@ -40,7 +40,7 @@ class _AboutState extends State<About> {
                         //   width: 100,
                         // ),
                          Text(
-                          S.of(context).morigeleyidongduan,
+                          S.current.morigeleyidongduan,
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
@@ -71,7 +71,7 @@ class _AboutState extends State<About> {
                       child: ListTile(
                         onTap: () {},
                         title:  Text(
-                          S.of(context).fuwurexian,
+                          S.current.fuwurexian,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w300),
                         ),

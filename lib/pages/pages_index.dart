@@ -31,8 +31,8 @@ class _PageIndexState extends State<PageIndex> {
           });
         },
         items:  [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: S.of(context).dingdan),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: S.of(context).wode),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: S.current.dingdan),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: S.current.wode),
         ],
       ),
     );
