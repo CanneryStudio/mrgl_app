@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:ruoyi_app/pages/login.dart';
 import 'package:ruoyi_app/routes/app_pages.dart';
 
 import 'Application.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
             ? AppPages.INITIAL
             : AppPages.INITIALLOGIN);
     return GetMaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
