@@ -28,7 +28,7 @@ class _WorkIndexState extends State<WorkIndex> {
               onTap: () {
                 Get.toNamed("/${value['component']}", arguments: {
                   "title": value['meta']['title'],
-                  "url": "https://ruoyi.vip/protocol.html"
+                  "url": ""
                 });
               },
               child: Column(

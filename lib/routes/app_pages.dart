@@ -7,6 +7,7 @@ import '../pages/mine/help/index.dart';
 import '../pages/mine/info/edit.dart';
 import '../pages/mine/info/index.dart';
 import '../pages/mine/pwd/index.dart';
+import '../pages/mine/sales/SalesOrderPage.dart';
 import '../pages/mine/setting/index.dart';
 import '../pages/pages_index.dart';
 import '../pages/system/config/index.dart';
@@ -40,7 +41,8 @@ class AppPages {
             page: () => const Settings(),
             children: [
               GetPage(name: AppRoutes.pwdIndex, page: () => const PWDIndex())
-            ])
+            ]),
+        GetPage(name: AppRoutes.salesorders, page: () => const SalesOrderPage()),
       ],
     ),
     GetPage(name: AppRoutes.Login, page: () => const MyHome(), children: [

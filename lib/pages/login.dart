@@ -254,7 +254,7 @@ class _LoginIndexState extends State<LoginIndex> {
                     },
                     child:  Text(
                       S.current.login,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                       ),
                     ),

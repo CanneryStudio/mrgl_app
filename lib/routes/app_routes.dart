@@ -35,6 +35,7 @@ abstract class AppRoutes {
 
   static const dict = "/system/dict/index";
 
-
   static const swagger = "/tool/swagger/index";
+
+  static const salesorders = "/salesorders";
 }

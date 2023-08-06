@@ -49,7 +49,7 @@
   "dingdanxiangqing": "订单详情",
   "yonghuming": "用户名:",
   "kuaiji": "会计",
-  "kehu": "客户：",
+  "kehu": "客户",
   "xiaoshou": "销售",
   "jingli": "经理",
   "putongjuese": "普通角色",
@@ -86,5 +86,8 @@
   "yiqueren": "已确认",
   "chuangjianshijian": "创建时间:",
   "bianjiziliao": "编辑资料",
-  "qingshurujiumima": "请输入旧密码"
+  "qingshurujiumima": "请输入旧密码",
+  "xiaoshouxiadan": "销售下单",
+  "shangpinxinxi": "数量:{good.amount}\n单价:{good.unitPrice}{widget.order.currencyType}\n总价:{good.totalPrice}{widget.order.currencyType}",
+  "goodNameGoodname": "商品名称: ${good.name!}"
 }

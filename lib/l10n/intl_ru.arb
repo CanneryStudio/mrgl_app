@@ -86,5 +86,8 @@
   "yiqueren": "Подтвержден",
   "chuangjianshijian": "Время создания:",
   "bianjiziliao": "Редактировать профиль",
-  "qingshurujiumima": "Пожалуйста, введите старый пароль"
+  "qingshurujiumima": "Пожалуйста, введите старый пароль",
+  "xiaoshouxiadan": "Персонал отдела продаж размещает заказы",
+  "shangpinxinxi": "Amount: ${good.amount}\n,Unit Price:${good.unitPrice}${widget.order.currencyType}\n,Total Price:{good.totalPrice}{widget.order.currencyType}",
+  "goodNameGoodname": "Good Name: ${good.name!}"
 }

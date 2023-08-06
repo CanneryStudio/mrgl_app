@@ -110,7 +110,7 @@ class _MineIndexState extends State<MineIndex> {
                                       "/home/userEdit",
                                       arguments: {"arg": value.data}));
                                 },
-                                leading: Icon(
+                                leading: const Icon(
                                   Icons.perm_identity,
                                   color: Colors.blue,
                                 ),
@@ -123,42 +123,21 @@ class _MineIndexState extends State<MineIndex> {
                               Divider(
                                 thickness: 1,
                               ),
-                              // ListTile(
-                              //   onTap: () async {
-                              //     ///TODO 跳转常见问题页
-                              //     await Get.toNamed("/home/help");
-                              //   },
-                              //   leading: Icon(
-                              //     Icons.help_outline,
-                              //     color: Colors.blue,
-                              //   ),
-                              //   title: Text(
-                              //     "常见问题",
-                              //     style: TextStyle(fontSize: 16),
-                              //   ),
-                              //   trailing: Icon(Icons.keyboard_arrow_right),
-                              // ),
-                              // Divider(
-                              //   thickness: 1,
-                              // ),
-                              // ListTile(
-                              //   onTap: () async {
-                              //     ///TODO 跳转关于我们页
-                              //     await Get.toNamed("/home/about");
-                              //   },
-                              //   leading: Icon(
-                              //     Icons.favorite_border,
-                              //     color: Colors.blue,
-                              //   ),
-                              //   title: Text(
-                              //     "关于我们",
-                              //     style: TextStyle(fontSize: 16),
-                              //   ),
-                              //   trailing: Icon(Icons.keyboard_arrow_right),
-                              // ),
-                              // Divider(
-                              //   thickness: 1,
-                              // ),
+                              if (!roleGroup.toString().contains("客户"))
+                                ListTile(
+                                    onTap: () async {
+                                      ///TODO 跳转我的客户页
+                                      await Get.toNamed("/home/salesorders");
+                                    },
+                                    leading: const Icon(
+                                      Icons.balance,
+                                      color: Colors.blue,
+                                    ),
+                                    title: Text(
+                                      '销售下单',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    trailing: Icon(Icons.keyboard_arrow_right)),
                               ListTile(
                                 onTap: () async {
                                   ///TODO 跳转应用设置页

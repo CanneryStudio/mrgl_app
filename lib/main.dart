@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
-
       initialRoute: GetStorage().read("initialRoute"),
       getPages: AppPages.routes,
       routingCallback: (routing) {

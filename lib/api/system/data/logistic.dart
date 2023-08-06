@@ -8,4 +8,3 @@ var getLogisticsByOrderId = (int orderId) async =>
 await DioRequest().httpRequest(
     "/system/logistics/listByOrderId/$orderId", true, "get");
 
-

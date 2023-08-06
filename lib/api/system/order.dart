@@ -7,3 +7,11 @@ var getAllOrder = () async =>
 var confirmOrder = (int orderId) async =>
 await DioRequest().httpRequest(
     "/system/ordersmanager/confirmOrder/$orderId", true, "get");
+
+var getGoodsByOrderId = (int orderId) async =>
+await DioRequest().httpRequest(
+    "/system/ordersmanager/getGoods/$orderId", true, "get");
+
+var submitOrder = (data) async =>
+await DioRequest().httpRequest(
+    "/system/ordersmanager", true, "post", data: data);

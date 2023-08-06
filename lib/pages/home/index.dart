@@ -1,10 +1,16 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:ruoyi_app/api/system/data/order/order_entity.dart';
+
 import '../../api/system/data/logistic.dart';
-import '../../api/system/data/order/order.dart' as order_api;
-import '../../api/system/order.dart';
 import '../../api/system/data/logistics/index.dart' as logistic_api;
-import '../../api/system/data/logistics/index.dart';
+import '../../api/system/data/order/good_entity.dart';
+import '../../api/system/order.dart';
 import '../../generated/l10n.dart';
 
 class HomeIndex extends StatefulWidget {
@@ -15,25 +21,14 @@ class HomeIndex extends StatefulWidget {
 }
 
 class _HomeIndexState extends State<HomeIndex> {
-  List<order_api.Row> orders = [];
+  List<OrderRows> orders = [];
 
   Future<void> fetchOrder() async {
-    // 调用 getAllOrder 函数获取所有订单的数据
     var response = await getAllOrder();
-
-    // 从 Response 对象中提取出 Map 对象
     Map<String, dynamic> map = response.data;
-
-    // 解析获取到的 Map 对象，将其转换为 "Order" 对象
-    order_api.Order order = order_api.Order.fromJson(map);
-
-    // 将 "order.rows" 赋值给 "orders"
-    orders = order.rows;
-
-    // 更新页面
+    OrderEntity order = OrderEntity.fromJson(map);
+    orders = List<OrderRows>.from(order.rows);
     setState(() {});
-
-    print("order:$order");
   }
 
   @override
@@ -47,7 +42,7 @@ class _HomeIndexState extends State<HomeIndex> {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.dingdanliebiao,
-            style: TextStyle(color: Colors.white)),
+            style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
       body: RefreshIndicator(
@@ -55,12 +50,12 @@ class _HomeIndexState extends State<HomeIndex> {
         child: ListView.builder(
           itemCount: orders.length,
           itemBuilder: (context, index) {
-            order_api.Row row = orders[index];
+            OrderRows row = orders[index];
             return Card(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               child: ListTile(
-                title: Text(S.current.dingdanhao + "${row.orderId}",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text("${S.current.dingdanhao}${row.orderId}",
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
                 onTap: () {
                   // 当用户点击列表项时，跳转到订单详情页
                   Navigator.push(
@@ -80,10 +75,11 @@ class _HomeIndexState extends State<HomeIndex> {
 }
 
 class OrderDetailPage extends StatefulWidget {
-  final order_api.Row order;
   late Future<logistic_api.Logistic> futureLogistics;
+  late Future<List<GoodGoods>> futureGoods;
+  final OrderRows order;
 
-  OrderDetailPage({required this.order});
+  OrderDetailPage({super.key, required this.order});
 
   @override
   _OrderDetailPageState createState() => _OrderDetailPageState();
@@ -91,21 +87,20 @@ class OrderDetailPage extends StatefulWidget {
 
 class _OrderDetailPageState extends State<OrderDetailPage> {
   late Future<logistic_api.Logistic> futureLogistics;
+  late Future<GoodEntity> goodEntities;
+  late Future<List<GoodGoods>> futureGoods;
 
   @override
   void initState() {
     super.initState();
     futureLogistics = fetchLogistics();
+    futureGoods = fetchGood();
   }
 
   void _confirmOrder() async {
     var response = await confirmOrder(widget.order.orderId);
     String message = response.data['statusText'] ?? 'Order confirmed!';
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
+    Get.snackbar("Tips:", message);
   }
 
   Future<logistic_api.Logistic> fetchLogistics() async {
@@ -115,8 +110,39 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
     return logistics;
   }
 
+  //拉取所有商品信息
+  Future<List<GoodGoods>> fetchGood() async {
+    var goods = List<GoodGoods>.empty(growable: true);
+    try {
+      var response = await getGoodsByOrderId(widget.order.orderId);
+      if (kDebugMode) {
+        print("订单号：${widget.order.orderId}");
+      }
+      var goodsData = jsonDecode(response.data['goods']);
+      if (goodsData is List) {
+        for (var value in goodsData) {
+          var good = GoodGoods.fromJson(value);
+          goods.add(good);
+        }
+      }
+      if (kDebugMode) {
+        print(goods.length);
+      }
+      if (kDebugMode) {
+        print(goods);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      goods = [];
+    }
+    return goods;
+  }
+
   @override
   Widget build(BuildContext context) {
+    var roleGroup = GetStorage().read("roleGroup") ?? "";
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.dingdanxiangqing,
@@ -135,57 +161,124 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(S.current.dingdanhao + '${widget.order.orderId}',
+                    Text('${S.current.dingdanhao}${widget.order.orderId}',
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 16),
                     //客户名称
-                    Text(S.current.kehu + '${widget.order.customerName}',
+                    Text('${S.current.kehu}${widget.order.customerName}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     Text(
-                        S.current.xiaoshouyuan +
-                            '${widget.order.salesmanName}',
+                        '${S.current.xiaoshouyuan}${widget.order.salesmanName}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
-                    Text(S.current.chuangjianshijian + '${widget.order.createData}',
+                    Text(
+                        '${S.current.chuangjianshijian}${widget.order.createData}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     //是否确认
-                    if (widget.order.confirm == 0)
-                      Text(S.current.shifouqueren + S.current.weiqueren,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                    if (widget.order.confirm == 1)
-                      Text(S.current.shifouqueren + S.current.yiqueren,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
+                    if(roleGroup != "客户")
+                      if (widget.order.confirm == 0)
+                        Text(S.current.shifouqueren + S.current.weiqueren,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                      if (widget.order.confirm == 1)
+                        Text(S.current.shifouqueren + S.current.yiqueren,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 16),
-                    Text(S.current.shangpin + '${widget.order.goods}',
-                        style: TextStyle(fontSize: 16)),
+                    FutureBuilder<List<GoodGoods>>(
+                      future: futureGoods,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<GoodGoods>> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const CircularProgressIndicator(); // show a loading spinner while waiting
+                        } else if (snapshot.hasError) {
+                          return Text(
+                              'Error: ${snapshot.error}'); // if there is an error, display it
+                        } else {
+                          List<GoodGoods> goods = snapshot.data!;
+                          return ListView.separated(
+                            itemCount: goods.length,
+                            shrinkWrap: true,
+                            separatorBuilder:
+                                (BuildContext context, int index) =>
+                                    const Divider(color: Colors.grey),
+                            itemBuilder: (context, index) {
+                              GoodGoods good = goods[index];
+                              print(good);
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 15),
+                                child: Card(
+                                  elevation: 5,
+                                  child: ListTile(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 15),
+                                    leading: const Icon(Icons.shopping_bag,
+                                        color: Colors.blue, size: 30),
+                                    title: Text(
+                                      S.of(context).goodNameGoodname.replaceAll(
+                                          "\${good.name!}", good.name!),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: 18),
+                                    ),
+                                    subtitle: Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                          S
+                                              .of(context)
+                                              .shangpinxinxi
+                                              .replaceAll('{good.amount}',
+                                                  good.amount.toString())
+                                              .replaceAll("{good.unitPrice}",
+                                                  good.unitPrice.toString())
+                                              .replaceAll("{good.totalPrice}",
+                                                  good.totalPrice.toString())
+                                              .replaceAll(
+                                                  "{widget.order.currencyType}",
+                                                  widget.order.currencyType),
+                                          style: const TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 16)),
+                                    ),
+                                    tileColor: Colors.white,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
                     const SizedBox(height: 16),
-                    Text(S.current.zongjia + '${widget.order.totalPrices}',
+                    Text('${S.current.zongjia}${widget.order.totalPrices}',
                         style: const TextStyle(fontSize: 16)),
                     const SizedBox(height: 16),
                     //订单进度
-                    if (widget.order.paymentSchedule == 0)
-                      Text(S.current.dingdanjindu + S.current.weifukuan,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                    if (widget.order.paymentSchedule == 1)
+                    if (roleGroup != "客户")
+                      if (widget.order.paymentSchedule == 0)
+                        Text(S.current.dingdanjindu + S.current.weifukuan,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                      if (widget.order.paymentSchedule == 1)
                       Text(S.current.dingdanjindu + S.current.yifukuan,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
-                    if (widget.order.paymentSchedule == 2)
-                      Text(
-                          S.current.dingdanjindu + S.current.yiwancheng,
+                     if (widget.order.paymentSchedule == 2)
+                      Text(S.current.dingdanjindu + S.current.yiwancheng,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: _confirmOrder,
-                      child: Text(S.current.querendingdan),
-                    ),
+                    if(roleGroup == "客户")
+                      ElevatedButton(
+                        onPressed: _confirmOrder,
+                        child: Text(S.current.querendingdan),
+                      ),
                   ],
                 ),
               ),
@@ -222,8 +315,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                               Text(S.current.genzong + row.track,
                                   style: const TextStyle(fontSize: 16)),
                               const SizedBox(height: 8),
-                              Text(
-                                  S.current.wupinneirong + row.contentGoods,
+                              Text(S.current.wupinneirong + row.contentGoods,
                                   style: const TextStyle(fontSize: 16)),
                               const SizedBox(height: 8),
                               if (row.progressState == 0)

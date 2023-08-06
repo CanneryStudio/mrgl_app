@@ -14,7 +14,6 @@ class _InfoIndexState extends State<InfoIndex> {
   @override
   Widget build(BuildContext context) {
     final details = Get.arguments as Map;
-
     var data = details["args"]["roleGroup"] ?? "";
     if (data == "超级管理员") {
       data = S.current.chaojiguanliyuan;
