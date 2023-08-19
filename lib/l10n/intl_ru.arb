@@ -88,6 +88,8 @@
   "bianjiziliao": "Редактировать профиль",
   "qingshurujiumima": "Пожалуйста, введите старый пароль",
   "xiaoshouxiadan": "Персонал отдела продаж размещает заказы",
-  "shangpinxinxi": "Amount: ${good.amount}\n,Unit Price:${good.unitPrice}${widget.order.currencyType}\n,Total Price:{good.totalPrice}{widget.order.currencyType}",
-  "goodNameGoodname": "Good Name: ${good.name!}"
+  "shangpinxinxi": "Сумма: ${good.amount}\n,Цена за единицу:${good.unitPrice}${widget.order.currencyType}\n,Общая цена:{good.totalPrice}{widget.order.currencyType}",
+  "goodNameGoodname": "Хорошее имя: ${good.name!}",
+  "wuliuzhuangtai": "Статус доставки",
+  "zhuangtaimiaoshu": "Описание статуса"
 }

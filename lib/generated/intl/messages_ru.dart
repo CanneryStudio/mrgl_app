@@ -62,7 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "genzong": MessageLookupByLibrary.simpleMessage("Отслеживание:"),
         "gerenxinxi": MessageLookupByLibrary.simpleMessage("Личная информация"),
         "goodNameGoodname":
-            MessageLookupByLibrary.simpleMessage("Good Name: \${good.name!}"),
+            MessageLookupByLibrary.simpleMessage("Хорошее имя: \${good.name!}"),
         "jianchagengxin":
             MessageLookupByLibrary.simpleMessage("Проверить обновления"),
         "jingli": MessageLookupByLibrary.simpleMessage("Менеджер"),
@@ -101,7 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Настройки приложения"),
         "shangpin": MessageLookupByLibrary.simpleMessage("Товар:"),
         "shangpinxinxi": MessageLookupByLibrary.simpleMessage(
-            "Amount: \${good.amount}\n,Unit Price:\${good.unitPrice}\${widget.order.currencyType}\n,Total Price:{good.totalPrice}{widget.order.currencyType}"),
+            "Сумма: \${good.amount}\n,Цена за единицу:\${good.unitPrice}\${widget.order.currencyType}\n,Общая цена:{good.totalPrice}{widget.order.currencyType}"),
         "shifouqueren":
             MessageLookupByLibrary.simpleMessage("Статус подтверждения:"),
         "shoujihaoma": MessageLookupByLibrary.simpleMessage("Номер телефона"),
@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wode": MessageLookupByLibrary.simpleMessage("Мой"),
         "wuliuxinxi":
             MessageLookupByLibrary.simpleMessage("Информация о доставке"),
+        "wuliuzhuangtai":
+            MessageLookupByLibrary.simpleMessage("Статус доставки"),
         "wupinneirong":
             MessageLookupByLibrary.simpleMessage("Содержание предмета:"),
         "xiaoshou": MessageLookupByLibrary.simpleMessage("Продажи"),
@@ -157,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "youxiang": MessageLookupByLibrary.simpleMessage("Электронная почта"),
         "zhengzaichuku": MessageLookupByLibrary.simpleMessage("В наличии"),
         "zhengzaiyunshu": MessageLookupByLibrary.simpleMessage("В пути"),
+        "zhuangtaimiaoshu":
+            MessageLookupByLibrary.simpleMessage("Описание статуса"),
         "zongjia": MessageLookupByLibrary.simpleMessage("Общая стоимость:")
       };
 }

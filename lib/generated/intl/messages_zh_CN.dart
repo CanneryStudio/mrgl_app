@@ -91,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "weiqueren": MessageLookupByLibrary.simpleMessage("未确认"),
         "wode": MessageLookupByLibrary.simpleMessage("我的"),
         "wuliuxinxi": MessageLookupByLibrary.simpleMessage("物流信息"),
+        "wuliuzhuangtai": MessageLookupByLibrary.simpleMessage("物流状态"),
         "wupinneirong": MessageLookupByLibrary.simpleMessage("物品内容:"),
         "xiaoshou": MessageLookupByLibrary.simpleMessage("销售"),
         "xiaoshouxiadan": MessageLookupByLibrary.simpleMessage("销售下单"),
@@ -116,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youxiang": MessageLookupByLibrary.simpleMessage("邮箱"),
         "zhengzaichuku": MessageLookupByLibrary.simpleMessage("正在出库"),
         "zhengzaiyunshu": MessageLookupByLibrary.simpleMessage("正在运输"),
+        "zhuangtaimiaoshu": MessageLookupByLibrary.simpleMessage("状态描述"),
         "zongjia": MessageLookupByLibrary.simpleMessage("总价：")
       };
 }

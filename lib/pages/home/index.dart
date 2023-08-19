@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ruoyi_app/api/system/data/detailedState/detailedstate_entity.dart';
 import 'package:ruoyi_app/api/system/data/order/order_entity.dart';
 
+import '../../api/system/data/detailedstate.dart';
 import '../../api/system/data/logistic.dart';
 import '../../api/system/data/logistics/index.dart' as logistic_api;
 import '../../api/system/data/order/good_entity.dart';
@@ -27,7 +29,7 @@ class _HomeIndexState extends State<HomeIndex> {
     var response = await getAllOrder();
     Map<String, dynamic> map = response.data;
     OrderEntity order = OrderEntity.fromJson(map);
-    orders = List<OrderRows>.from(order.rows);
+    orders = List<OrderRows>.from(order.rows!);
     setState(() {});
   }
 
@@ -54,7 +56,7 @@ class _HomeIndexState extends State<HomeIndex> {
             return Card(
               margin: const EdgeInsets.all(8),
               child: ListTile(
-                title: Text("${S.current.dingdanhao}${row.orderId}",
+                title: Text("${S.current.dingdanhao}${row.orderName}",
                     style: const TextStyle(fontWeight: FontWeight.bold)),
                 onTap: () {
                   // 当用户点击列表项时，跳转到订单详情页
@@ -86,7 +88,8 @@ class OrderDetailPage extends StatefulWidget {
 }
 
 class _OrderDetailPageState extends State<OrderDetailPage> {
-  late Future<logistic_api.Logistic> futureLogistics;
+  late Future<logistic_api.Logistic?> futureLogistics;
+  late Future<DetailedstateEntity?> futureDetailedState;
   late Future<GoodEntity> goodEntities;
   late Future<List<GoodGoods>> futureGoods;
 
@@ -94,27 +97,45 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   void initState() {
     super.initState();
     futureLogistics = fetchLogistics();
+    futureDetailedState = fetchDetailedState();
     futureGoods = fetchGood();
   }
 
   void _confirmOrder() async {
-    var response = await confirmOrder(widget.order.orderId);
+    var response = await confirmOrder(widget.order.orderId!);
     String message = response.data['statusText'] ?? 'Order confirmed!';
     Get.snackbar("Tips:", message);
   }
 
-  Future<logistic_api.Logistic> fetchLogistics() async {
-    var response = await getLogisticsByOrderId(widget.order.orderId);
-    Map<String, dynamic> map = response.data;
-    logistic_api.Logistic logistics = logistic_api.Logistic.fromJson(map);
-    return logistics;
+  Future<logistic_api.Logistic?> fetchLogistics() async {
+    try {
+      var response = await getLogisticsByOrderId(widget.order.orderId!);
+      Map<String, dynamic> map = response.data;
+      logistic_api.Logistic logistics = logistic_api.Logistic.fromJson(map);
+      return logistics;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<DetailedstateEntity?> fetchDetailedState() async {
+    try {
+      var response = await getDetailedStateByOrderId(widget.order.orderId!);
+      Map<String, dynamic> map = response.data;
+      DetailedstateEntity detailedState = DetailedstateEntity.fromJson(map);
+      return detailedState;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   //拉取所有商品信息
   Future<List<GoodGoods>> fetchGood() async {
     var goods = List<GoodGoods>.empty(growable: true);
     try {
-      var response = await getGoodsByOrderId(widget.order.orderId);
+      var response = await getGoodsByOrderId(widget.order.orderId!);
       if (kDebugMode) {
         print("订单号：${widget.order.orderId}");
       }
@@ -146,7 +167,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.dingdanxiangqing,
-            style: TextStyle(color: Colors.white)),
+            style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
       body: Padding(
@@ -154,7 +175,8 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
         child: ListView(
           children: <Widget>[
             Text(S.current.dingdanxinxi,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -164,30 +186,35 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                     Text('${S.current.dingdanhao}${widget.order.orderId}',
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     //客户名称
-                    Text('${S.current.kehu}${widget.order.customerName}',
-                        style: const TextStyle(fontSize: 16)),
-                    const SizedBox(height: 16),
+                    if (roleGroup != "客户")
+                      Text('${S.current.kehu}${widget.order.customerName}',
+                          style: const TextStyle(fontSize: 16)),
+                    const SizedBox(height: 8),
+                    if (roleGroup != "客户" && roleGroup != "销售")
+                      Text(
+                          '${S.current.xiaoshouyuan}${widget.order.salesmanName}',
+                          style: const TextStyle(fontSize: 16)),
+                    const SizedBox(height: 8),
                     Text(
-                        '${S.current.xiaoshouyuan}${widget.order.salesmanName}',
+                        '${S.current.chuangjianshijian} ${widget.order.createData}',
                         style: const TextStyle(fontSize: 16)),
-                    const SizedBox(height: 16),
-                    Text(
-                        '${S.current.chuangjianshijian}${widget.order.createData}',
-                        style: const TextStyle(fontSize: 16)),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     //是否确认
-                    if(roleGroup != "客户")
-                      if (widget.order.confirm == 0)
+                    if (roleGroup != "客户")
+                      if (widget.order.confirm == 0 &&
+                          widget.order.adminConfirm == true)
                         Text(S.current.shifouqueren + S.current.weiqueren,
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
-                      if (widget.order.confirm == 1)
+                    if (roleGroup != "客户")
+                      if (widget.order.confirm == 1 &&
+                          widget.order.adminConfirm == true)
                         Text(S.current.shifouqueren + S.current.yiqueren,
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     FutureBuilder<List<GoodGoods>>(
                       future: futureGoods,
                       builder: (BuildContext context,
@@ -241,7 +268,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                                                   good.totalPrice.toString())
                                               .replaceAll(
                                                   "{widget.order.currencyType}",
-                                                  widget.order.currencyType),
+                                                  widget.order.currencyType!),
                                           style: const TextStyle(
                                               color: Colors.black54,
                                               fontSize: 16)),
@@ -255,26 +282,28 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         }
                       },
                     ),
-                    const SizedBox(height: 16),
-                    Text('${S.current.zongjia}${widget.order.totalPrices}',
+                    const SizedBox(height: 8),
+                    Text(
+                        '${S.current.zongjia}${widget.order.totalPrices} ${widget.order.currencyType}',
                         style: const TextStyle(fontSize: 16)),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     //订单进度
                     if (roleGroup != "客户")
                       if (widget.order.paymentSchedule == 0)
                         Text(S.current.dingdanjindu + S.current.weifukuan,
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
+                    if (roleGroup != "客户")
                       if (widget.order.paymentSchedule == 1)
-                      Text(S.current.dingdanjindu + S.current.yifukuan,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                     if (widget.order.paymentSchedule == 2)
-                      Text(S.current.dingdanjindu + S.current.yiwancheng,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 8),
-                    if(roleGroup == "客户")
+                        Text(S.current.dingdanjindu + S.current.yifukuan,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                    if (roleGroup != "客户")
+                      if (widget.order.paymentSchedule == 2)
+                        Text(S.current.dingdanjindu + S.current.yiwancheng,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                    if (roleGroup == "客户")
                       ElevatedButton(
                         onPressed: _confirmOrder,
                         child: Text(S.current.querendingdan),
@@ -283,71 +312,72 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
             Text(
               S.current.wuliuxinxi,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
-            FutureBuilder<logistic_api.Logistic>(
-              future: futureLogistics,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasError) {
-                    return Text("Error: ${snapshot.error}");
-                  }
-                  logistic_api.Logistic logistics = snapshot.data!;
-                  return ListView(
-                    shrinkWrap: true,
-                    // this will make the ListView size to its children's height
-                    physics: NeverScrollableScrollPhysics(),
-                    // to disable the scrolling in ListView
-                    children: logistics.rows.map<Widget>((row) {
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
+            Card(
+              margin: const EdgeInsets.all(16.0),
+              elevation: 4.0,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FutureBuilder<logistic_api.Logistic?>(
+                      future: futureLogistics,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasError) {
+                            return Text("Error: ${snapshot.error}");
+                          }
+                          logistic_api.Logistic logistics = snapshot.data!;
+                          return Column(
+                            children: logistics.rows.map<Widget>((row) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(S.current.fahuodi + row!.dispatch!,
+                                        style: const TextStyle(fontSize: 16)),
+                                    Text(S.current.genzong + row.track!,
+                                        style: const TextStyle(fontSize: 16)),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          );
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    ),
+                    FutureBuilder<DetailedstateEntity?>(
+                      future: futureDetailedState,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasError) {
+                            return Text("Error: ${snapshot.error}");
+                          }
+                          DetailedstateEntity detailedState = snapshot.data!;
+                          return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(S.current.fahuodi + row.dispatch,
-                                  style: const TextStyle(fontSize: 16)),
-                              const SizedBox(height: 8),
-                              Text(S.current.genzong + row.track,
-                                  style: const TextStyle(fontSize: 16)),
-                              const SizedBox(height: 8),
-                              Text(S.current.wupinneirong + row.contentGoods,
-                                  style: const TextStyle(fontSize: 16)),
-                              const SizedBox(height: 8),
-                              if (row.progressState == 0)
-                                Text(
-                                    S.current.dangqianjindu +
-                                        S.current.zhengzaichuku,
-                                    style: const TextStyle(fontSize: 16)),
-                              if (row.progressState == 1)
-                                Text(
-                                    S.current.dangqianjindu +
-                                        S.current.dengdailanshou,
-                                    style: const TextStyle(fontSize: 16)),
-                              if (row.progressState == 2)
-                                Text(
-                                    S.current.dangqianjindu +
-                                        S.current.zhengzaiyunshu,
-                                    style: const TextStyle(fontSize: 16)),
-                              if (row.progressState == 3)
-                                Text(
-                                    S.current.dangqianjindu +
-                                        S.current.yididamudidi,
-                                    style: const TextStyle(fontSize: 16)),
+                            children: [
+                              Text(
+                                  '${S.current.wuliuzhuangtai}: ${detailedState.data?.stateName ?? "No Data"}'),
+                              Text(
+                                  '${S.current.zhuangtaimiaoshu}: ${detailedState.data?.stateDesc ?? "No Data"}'),
                             ],
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  );
-                } else {
-                  return CircularProgressIndicator();
-                }
-              },
+                          );
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    )
+                  ],
+                ),
+              ),
             ),
           ],
         ),

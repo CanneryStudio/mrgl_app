@@ -89,5 +89,7 @@
   "qingshurujiumima": "请输入旧密码",
   "xiaoshouxiadan": "销售下单",
   "shangpinxinxi": "数量:{good.amount}\n单价:{good.unitPrice}{widget.order.currencyType}\n总价:{good.totalPrice}{widget.order.currencyType}",
-  "goodNameGoodname": "商品名称: ${good.name!}"
+  "goodNameGoodname": "商品名称: ${good.name!}",
+  "wuliuzhuangtai": "物流状态",
+  "zhuangtaimiaoshu": "状态描述"
 }

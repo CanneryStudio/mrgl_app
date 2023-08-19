@@ -41,7 +41,7 @@ class _AboutState extends State<About> {
                         // ),
                          Text(
                           S.current.morigeleyidongduan,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -72,7 +72,7 @@ class _AboutState extends State<About> {
                         onTap: () {},
                         title:  Text(
                           S.current.fuwurexian,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w300),
                         ),
                         trailing: RichText(

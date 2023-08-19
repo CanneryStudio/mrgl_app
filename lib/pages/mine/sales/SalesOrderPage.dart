@@ -189,6 +189,8 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                     'Your order has been submitted!',
                     snackPosition: SnackPosition.TOP,
                   );
+                  //退回上级页面
+                  Navigator.pop(context);
                   submitOrder(json.encode(requestJson));
                 } catch (e) {
                   if (kDebugMode) {
