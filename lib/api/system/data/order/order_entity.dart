@@ -1,13 +1,14 @@
 import 'package:ruoyi_app/generated/json/base/json_field.dart';
 import 'package:ruoyi_app/generated/json/order_entity.g.dart';
 import 'dart:convert';
+export 'package:ruoyi_app/generated/json/order_entity.g.dart';
 
 @JsonSerializable()
 class OrderEntity {
-	late int total;
-	late List<OrderRows> rows;
-	late int code;
-	late String msg;
+	int? total;
+	List<OrderRows>? rows;
+	int? code;
+	String? msg;
 
 	OrderEntity();
 
@@ -28,17 +29,19 @@ class OrderRows {
 	dynamic updateBy;
 	dynamic updateTime;
 	dynamic remark;
-	late int orderId;
-	late String customerName;
-	late String salesmanName;
-	late String goods;
-	late String createData;
-	dynamic lastChangeData;
-	late int paymentSchedule;
-	late String totalPrices;
-	late String currencyType;
-	late int confirm;
-	late bool adminConfirm;
+	int? orderId;
+	String? orderName;
+	String? customerName;
+	String? salesmanName;
+	String? goods;
+	String? createData;
+	String? lastChangeData;
+	int? paymentSchedule;
+	String? totalPrices;
+	String? currencyType;
+	int? confirm;
+	int? stateID;
+	bool? adminConfirm;
 
 	OrderRows();
 
