@@ -11,8 +11,10 @@ DetailedstateEntity $DetailedstateEntityFromJson(Map<String, dynamic> json) {
   if (code != null) {
     detailedstateEntity.code = code;
   }
-  final DetailedstateData? data = jsonConvert.convert<DetailedstateData>(
-      json['data']);
+  final List<DetailedstateData>? data = (json['data'] as List<dynamic>?)
+      ?.map(
+          (e) => jsonConvert.convert<DetailedstateData>(e) as DetailedstateData)
+      .toList();
   if (data != null) {
     detailedstateEntity.data = data;
   }
@@ -23,15 +25,15 @@ Map<String, dynamic> $DetailedstateEntityToJson(DetailedstateEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['msg'] = entity.msg;
   data['code'] = entity.code;
-  data['data'] = entity.data?.toJson();
+  data['data'] = entity.data?.map((v) => v.toJson()).toList();
   return data;
 }
 
-extension DetailedstateEntityExt on DetailedstateEntity {
+extension DetailedstateEntityExtension on DetailedstateEntity {
   DetailedstateEntity copyWith({
     String? msg,
     int? code,
-    DetailedstateData? data,
+    List<DetailedstateData>? data,
   }) {
     return DetailedstateEntity()
       ..msg = msg ?? this.msg
@@ -78,7 +80,7 @@ DetailedstateData $DetailedstateDataFromJson(Map<String, dynamic> json) {
   if (stateDesc != null) {
     detailedstateData.stateDesc = stateDesc;
   }
-  final dynamic stateImage = json['stateImage'];
+  final String? stateImage = jsonConvert.convert<String>(json['stateImage']);
   if (stateImage != null) {
     detailedstateData.stateImage = stateImage;
   }
@@ -105,7 +107,7 @@ Map<String, dynamic> $DetailedstateDataToJson(DetailedstateData entity) {
   return data;
 }
 
-extension DetailedstateDataExt on DetailedstateData {
+extension DetailedstateDataExtension on DetailedstateData {
   DetailedstateData copyWith({
     dynamic createBy,
     dynamic createTime,
@@ -116,7 +118,7 @@ extension DetailedstateDataExt on DetailedstateData {
     int? orderID,
     String? stateName,
     String? stateDesc,
-    dynamic stateImage,
+    String? stateImage,
     dynamic video,
   }) {
     return DetailedstateData()

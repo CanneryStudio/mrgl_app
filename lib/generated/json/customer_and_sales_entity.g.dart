@@ -37,7 +37,7 @@ Map<String, dynamic> $CustomerAndSalesEntityToJson(
   return data;
 }
 
-extension CustomerAndSalesEntityExt on CustomerAndSalesEntity {
+extension CustomerAndSalesEntityExtension on CustomerAndSalesEntity {
   CustomerAndSalesEntity copyWith({
     int? total,
     List<CustomerAndSalesRows>? rows,
@@ -107,7 +107,7 @@ Map<String, dynamic> $CustomerAndSalesRowsToJson(CustomerAndSalesRows entity) {
   return data;
 }
 
-extension CustomerAndSalesRowsExt on CustomerAndSalesRows {
+extension CustomerAndSalesRowsExtension on CustomerAndSalesRows {
   CustomerAndSalesRows copyWith({
     dynamic createBy,
     dynamic createTime,

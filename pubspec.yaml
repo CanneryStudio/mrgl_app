@@ -45,6 +45,9 @@ dependencies:
   flutter_simple_treeview: ^3.0.1
   intl: any
   i18n_extension: ^9.0.2
+  google_fonts: ^5.1.0
+  photo_view: ^0.14.0
+  image_gallery_saver: ^2.0.3
 
 
 dev_dependencies:

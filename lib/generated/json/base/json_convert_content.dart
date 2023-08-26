@@ -16,18 +16,19 @@ typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
 typedef EnumConvertFunction<T> = T Function(String value);
 
 class JsonConvert {
-  static final Map<String, JsonConvertFunction> convertFuncMap = {
-    (CustomerAndSalesEntity).toString(): CustomerAndSalesEntity.fromJson,
-    (CustomerAndSalesRows).toString(): CustomerAndSalesRows.fromJson,
-    (SalesEntity).toString(): SalesEntity.fromJson,
-    (SalesRows).toString(): SalesRows.fromJson,
-    (DetailedstateEntity).toString(): DetailedstateEntity.fromJson,
-    (DetailedstateData).toString(): DetailedstateData.fromJson,
-    (GoodEntity).toString(): GoodEntity.fromJson,
-    (GoodGoods).toString(): GoodGoods.fromJson,
-    (OrderEntity).toString(): OrderEntity.fromJson,
-    (OrderRows).toString(): OrderRows.fromJson,
-  };
+  static Map<String, JsonConvertFunction> get convertFuncMap =>
+      {
+        (CustomerAndSalesEntity).toString(): CustomerAndSalesEntity.fromJson,
+        (CustomerAndSalesRows).toString(): CustomerAndSalesRows.fromJson,
+        (SalesEntity).toString(): SalesEntity.fromJson,
+        (SalesRows).toString(): SalesRows.fromJson,
+        (DetailedstateEntity).toString(): DetailedstateEntity.fromJson,
+        (DetailedstateData).toString(): DetailedstateData.fromJson,
+        (GoodEntity).toString(): GoodEntity.fromJson,
+        (GoodGoods).toString(): GoodGoods.fromJson,
+        (OrderEntity).toString(): OrderEntity.fromJson,
+        (OrderRows).toString(): OrderRows.fromJson,
+      };
 
   T? convert<T>(dynamic value, {EnumConvertFunction? enumConvert}) {
     if (value == null) {

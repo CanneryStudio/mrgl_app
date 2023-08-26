@@ -27,7 +27,7 @@ Map<String, dynamic> $GoodEntityToJson(GoodEntity entity) {
   return data;
 }
 
-extension GoodEntityExt on GoodEntity {
+extension GoodEntityExtension on GoodEntity {
   GoodEntity copyWith({
     String? msg,
     int? code,
@@ -70,7 +70,7 @@ Map<String, dynamic> $GoodGoodsToJson(GoodGoods entity) {
   return data;
 }
 
-extension GoodGoodsExt on GoodGoods {
+extension GoodGoodsExtension on GoodGoods {
   GoodGoods copyWith({
     String? name,
     int? amount,

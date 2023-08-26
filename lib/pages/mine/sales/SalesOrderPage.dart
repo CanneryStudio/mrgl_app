@@ -29,6 +29,7 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
   String _orderContent = "";
   String _selectedQuantity = "";
   String _selectedUnitPrice = "";
+  String _orderName = "";
   CurrencyType _selectedCurrency = CurrencyType.CNY;
 
   late List<SalesRows> _customerAndSalesEntity = [];
@@ -40,6 +41,7 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
   final TextEditingController _quantityController = TextEditingController();
   final TextEditingController _orderContentController = TextEditingController();
   final TextEditingController _unitPriceController = TextEditingController();
+  final TextEditingController _orderNameController = TextEditingController();
 
   Future<void> getCustomerAndSales() async {
     var response = await getSales();
@@ -95,6 +97,20 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                     _selectedUser = value!;
                   });
                 }),
+            const SizedBox(height: 10),
+            //订单名称
+            TextField(
+              controller: _orderNameController,
+              decoration: const InputDecoration(
+                labelText: '请输入订单名称',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _orderName = value;
+                });
+              },
+            ),
             const SizedBox(height: 10),
             //商品名称
             TextField(
@@ -171,12 +187,13 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                     });
                   });
                 },
-                child: Text("添加")),
-            SizedBox(height: 20),
+                child: const Text("添加")),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 try {
                   Map<String,dynamic> requestJson={
+                    "orderName": _orderName,
                     "customerName": _selectedUser,
                     "salesmanName": GetStorage().read('userName'),
                     "goods": json.encode(goodsTableRows),

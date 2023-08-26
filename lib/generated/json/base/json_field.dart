@@ -14,12 +14,12 @@ class JSONField {
 
   //Whether to participate in toJson
   final bool? serialize;
-  
+
   //Whether to participate in fromMap
   final bool? deserialize;
-  
+
   //Enumeration or not
   final bool? isEnum;
-  
+
   const JSONField({this.name, this.serialize, this.deserialize, this.isEnum});
 }

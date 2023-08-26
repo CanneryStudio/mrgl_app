@@ -5,9 +5,9 @@ export 'package:ruoyi_app/generated/json/detailedstate_entity.g.dart';
 
 @JsonSerializable()
 class DetailedstateEntity {
-	String? msg;
-	int? code;
-	DetailedstateData? data;
+	String? msg = '';
+	int? code = 0;
+	List<DetailedstateData>? data = [];
 
 	DetailedstateEntity();
 
@@ -28,11 +28,11 @@ class DetailedstateData {
 	dynamic updateBy;
 	dynamic updateTime;
 	dynamic remark;
-	int? id;
-	int? orderID;
-	String? stateName;
-	String? stateDesc;
-	dynamic stateImage;
+	int? id = 0;
+	int? orderID = 0;
+	String? stateName = '';
+	String? stateDesc = '';
+	String? stateImage = '';
 	dynamic video;
 
 	DetailedstateData();

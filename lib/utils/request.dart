@@ -5,7 +5,7 @@ import 'package:ruoyi_app/utils/sputils.dart';
 
 /// dio网络请求配置表 自定义
 class DioConfig {
-  static const baseURL = "http://192.168.31.139:8089/"; //域名
+  static const baseURL = "http://192.168.31.190:8089"; //域名
   static const timeout = 10000; //超时时间
 }
 
@@ -106,7 +106,6 @@ class DioRequest {
         if (token != null) {
           GetStorage().write("token", token);
         } else {
-          ///TODO 如果也是空的那么清空所有信息，跳转登录页面逻辑
           GetStorage().remove("token");
           SPUtil().remove("token");
           Get.offNamed("/login");
