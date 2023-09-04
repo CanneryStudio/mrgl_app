@@ -487,7 +487,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                                               .replaceAll(
                                                   "{widget.order.currencyType}",
                                                   good.item_currency
-                                                      .toString()!),
+                                                      .toString()),
                                           style: const TextStyle(
                                               color: Colors.black54,
                                               fontSize: 16)),

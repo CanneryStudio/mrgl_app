@@ -88,55 +88,52 @@ class _UserEditState extends State<UserEdit> {
               ],
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            height: 40,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: [
-                Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text(
-                        S.current.shoujihaoma,
-                      ),
-                    )),
-                Expanded(
-                    flex: 7,
-                    child: Container(
-                      margin: EdgeInsets.only(right: 20),
-                      padding: EdgeInsets.only(left: 5),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 1),
-                          borderRadius: BorderRadius.all(Radius.circular(5))),
-                      child: Container(
-                        child: TextField(
-                          onChanged: (value) {
-                            details["arg"]["data"]["phonenumber"] = value;
-                          },
-                          controller: TextEditingController.fromValue(
-                            TextEditingValue(
-                                text: details["arg"]["data"]["phonenumber"],
-                                selection: TextSelection.fromPosition(
-                                    TextPosition(
-                                        affinity: TextAffinity.downstream,
-                                        offset: details["arg"]["data"]
-                                        ["phonenumber"]
-                                            .length))),
-                          ),
-                          decoration:  InputDecoration(
-                              border: InputBorder.none,
-                              hintText: S.current.qingshurushoujihao,
-                              hintStyle: TextStyle(fontSize: 14)),
-                        ),
-                      ),
-                    )),
-              ],
-            ),
-          ),
+          // Container(
+          //   height: 40,
+          //   child: Flex(
+          //     direction: Axis.horizontal,
+          //     children: [
+          //       Expanded(
+          //           flex: 3,
+          //           child: Container(
+          //             padding: EdgeInsets.only(left: 20),
+          //             child: Text(
+          //               S.current.shoujihaoma,
+          //             ),
+          //           )),
+          //       Expanded(
+          //           flex: 7,
+          //           child: Container(
+          //             margin: EdgeInsets.only(right: 20),
+          //             padding: EdgeInsets.only(left: 5),
+          //             decoration: BoxDecoration(
+          //                 border: Border.all(width: 1),
+          //                 borderRadius: BorderRadius.all(Radius.circular(5))),
+          //             child: Container(
+          //               child: TextField(
+          //                 onChanged: (value) {
+          //                   details["arg"]["data"]["phonenumber"] = value;
+          //                 },
+          //                 controller: TextEditingController.fromValue(
+          //                   TextEditingValue(
+          //                       text: details["arg"]["data"]["phonenumber"],
+          //                       selection: TextSelection.fromPosition(
+          //                           TextPosition(
+          //                               affinity: TextAffinity.downstream,
+          //                               offset: details["arg"]["data"]
+          //                               ["phonenumber"]
+          //                                   .length))),
+          //                 ),
+          //                 decoration:  InputDecoration(
+          //                     border: InputBorder.none,
+          //                     hintText: S.current.qingshurushoujihao,
+          //                     hintStyle: TextStyle(fontSize: 14)),
+          //               ),
+          //             ),
+          //           )),
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: 15,
           ),
@@ -185,35 +182,32 @@ class _UserEditState extends State<UserEdit> {
               ],
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            height: 40,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: [
-                Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text(
-                        S.current.xingbie,
-                      ),
-                    )),
-                Expanded(
-                    flex: 7,
-                    child: Row(
-                      children: [
-                        _radioSexBox("1"),
-                        Text("男"),
-                        _radioSexBox("2"),
-                        Text("女"),
-                      ],
-                    ))
-              ],
-            ),
-          ),
+          // Container(
+          //   height: 40,
+          //   child: Flex(
+          //     direction: Axis.horizontal,
+          //     children: [
+          //       Expanded(
+          //           flex: 3,
+          //           child: Container(
+          //             padding: EdgeInsets.only(left: 20),
+          //             child: Text(
+          //               S.current.xingbie,
+          //             ),
+          //           )),
+          //       Expanded(
+          //           flex: 7,
+          //           child: Row(
+          //             children: [
+          //               _radioSexBox("1"),
+          //               Text("男"),
+          //               _radioSexBox("2"),
+          //               Text("女"),
+          //             ],
+          //           ))
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: 25,
           ),
