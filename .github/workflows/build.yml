@@ -6,8 +6,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-and-release-android:
-    runs-on: ubuntu-latest
   flutter_test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
