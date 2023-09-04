@@ -122,6 +122,15 @@ OrderRows $OrderRowsFromJson(Map<String, dynamic> json) {
   if (stateID != null) {
     orderRows.stateID = stateID;
   }
+  final bool? waitingEndConfirm = jsonConvert.convert<bool>(
+      json['waitingEndConfirm']);
+  if (waitingEndConfirm != null) {
+    orderRows.waitingEndConfirm = waitingEndConfirm;
+  }
+  final bool? done = jsonConvert.convert<bool>(json['done']);
+  if (done != null) {
+    orderRows.done = done;
+  }
   final bool? adminConfirm = jsonConvert.convert<bool>(json['adminConfirm']);
   if (adminConfirm != null) {
     orderRows.adminConfirm = adminConfirm;
@@ -148,6 +157,8 @@ Map<String, dynamic> $OrderRowsToJson(OrderRows entity) {
   data['currencyType'] = entity.currencyType;
   data['confirm'] = entity.confirm;
   data['stateID'] = entity.stateID;
+  data['waitingEndConfirm'] = entity.waitingEndConfirm;
+  data['done'] = entity.done;
   data['adminConfirm'] = entity.adminConfirm;
   return data;
 }
@@ -171,6 +182,8 @@ extension OrderRowsExtension on OrderRows {
     String? currencyType,
     int? confirm,
     int? stateID,
+    bool? waitingEndConfirm,
+    bool? done,
     bool? adminConfirm,
   }) {
     return OrderRows()
@@ -191,6 +204,8 @@ extension OrderRowsExtension on OrderRows {
       ..currencyType = currencyType ?? this.currencyType
       ..confirm = confirm ?? this.confirm
       ..stateID = stateID ?? this.stateID
+      ..waitingEndConfirm = waitingEndConfirm ?? this.waitingEndConfirm
+      ..done = done ?? this.done
       ..adminConfirm = adminConfirm ?? this.adminConfirm;
   }
 }

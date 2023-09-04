@@ -28,6 +28,8 @@ class GoodGoods {
 	double? unitPrice;
 	@JSONField(name: "total_price")
 	double? totalPrice;
+	@JSONField(name: "item_currency")
+	String? item_currency;
 
 	GoodGoods();
 

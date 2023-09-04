@@ -31,6 +31,7 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
   String _selectedUnitPrice = "";
   String _orderName = "";
   CurrencyType _selectedCurrency = CurrencyType.CNY;
+  CurrencyType _selectedItemCurrency = CurrencyType.CNY;
 
   late List<SalesRows> _customerAndSalesEntity = [];
   List<Map<String, dynamic>> goodsTableRows = [];
@@ -42,6 +43,7 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
   final TextEditingController _orderContentController = TextEditingController();
   final TextEditingController _unitPriceController = TextEditingController();
   final TextEditingController _orderNameController = TextEditingController();
+  final TextEditingController _itemCurrencyController = TextEditingController();
 
   Future<void> getCustomerAndSales() async {
     var response = await getSales();
@@ -78,7 +80,7 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).xiaoshouxiadan,
+        title: Text(S.current.xiaoshouxiadan,
             style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.blue,
       ),
@@ -154,17 +156,31 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                 });
               },
             ),
-            SizedBox(height: 10),
+            // _buildDropdownButton(
+            //   label: "请选择总价货币",
+            //   value: currencyData[_selectedCurrency]!['name']!,
+            //   items: CurrencyType.values
+            //       .map((e) => currencyData[e]!['name']!)
+            //       .toList(),
+            //   onChanged: (String? value) {
+            //     setState(() {
+            //       _selectedCurrency = CurrencyType.values.firstWhere(
+            //         (e) => currencyData[e]!['name'] == value,
+            //       );
+            //     });
+            //   },
+            // ),
+            SizedBox(height: 20),
             _buildDropdownButton(
-              label: "请选择货币",
-              value: currencyData[_selectedCurrency]!['name']!,
+              label: "请选择货物货币",
+              value: currencyData[_selectedItemCurrency]!['name']!,
               items: CurrencyType.values
                   .map((e) => currencyData[e]!['name']!)
                   .toList(),
               onChanged: (String? value) {
                 setState(() {
-                  _selectedCurrency = CurrencyType.values.firstWhere(
-                    (e) => currencyData[e]!['name'] == value,
+                  _selectedItemCurrency = CurrencyType.values.firstWhere(
+                        (e) => currencyData[e]!['name'] == value,
                   );
                 });
               },
@@ -178,12 +194,14 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                   good.amount = int.tryParse(_selectedQuantity);
                   good.totalPrice =
                       good.amount! * double.parse(_selectedUnitPrice);
+                  good.item_currency = _selectedItemCurrency.name;
                   setState(() {
                     goodsTableRows.add({
                       'name': _orderContent,
                       'amount': _selectedQuantity.toString(),
                       'unit_price': good.unitPrice.toString(),
                       'total_price': good.totalPrice.toString(),
+                      'item_currency': _selectedItemCurrency.name,
                     });
                   });
                 },
@@ -269,7 +287,8 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
             1: IntrinsicColumnWidth(),
             2: IntrinsicColumnWidth(),
             3: IntrinsicColumnWidth(),
-            4: IntrinsicColumnWidth(), // New column for delete button
+            4: IntrinsicColumnWidth(),
+            5: IntrinsicColumnWidth(),
           },
           children: <TableRow>[
             const TableRow(
@@ -282,6 +301,9 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                         style: TextStyle(fontWeight: FontWeight.bold))),
                 Center(
                     child: Text('单价',
+                        style: TextStyle(fontWeight: FontWeight.bold))),
+                Center(
+                    child: Text('货币',
                         style: TextStyle(fontWeight: FontWeight.bold))),
                 Center(
                     child: Text('总价',
@@ -312,6 +334,12 @@ class _SalesOrderPageState extends State<SalesOrderPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Center(child: Text(item['unit_price'].toString())),
+                  ),
+                ),
+                TableCell(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Center(child: Text(item['item_currency'].toString())),
                   ),
                 ),
                 TableCell(

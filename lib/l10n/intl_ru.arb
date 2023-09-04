@@ -91,5 +91,14 @@
   "shangpinxinxi": "Сумма: ${good.amount}\n,Цена за единицу:${good.unitPrice}${widget.order.currencyType}\n,Общая цена:{good.totalPrice}{widget.order.currencyType}",
   "goodNameGoodname": "Хорошее имя: ${good.name!}",
   "wuliuzhuangtai": "Статус доставки",
-  "zhuangtaimiaoshu": "Описание статуса"
+  "zhuangtaimiaoshu": "Описание статуса",
+  "emptywuliu": "Информация о логистике пока не найдена",
+  "orderConfirmed": "Заказ подтвержден!",
+  "querenjieshu": "Подтвердите закрытие ордера",
+  "dingdanyijieshu": "Заказ закрыт",
+  "ruyouyiyi": "Если у Вас есть какие-либо возражения, пожалуйста, укажите их здесь!",
+  "tijiaoyiyi": "Представление возражений",
+  "yichenggongtijiaoyiyi": "Возражение успешно подано!",
+  "tijiaoshibai": "Сбой фиксации!",
+  "saveVideo": "Save video"
 }

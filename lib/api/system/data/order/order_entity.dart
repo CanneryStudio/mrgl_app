@@ -5,10 +5,10 @@ export 'package:ruoyi_app/generated/json/order_entity.g.dart';
 
 @JsonSerializable()
 class OrderEntity {
-	int? total;
-	List<OrderRows>? rows;
-	int? code;
-	String? msg;
+	int? total = 0;
+	List<OrderRows>? rows = [];
+	int? code = 0;
+	String? msg = '';
 
 	OrderEntity();
 
@@ -29,19 +29,21 @@ class OrderRows {
 	dynamic updateBy;
 	dynamic updateTime;
 	dynamic remark;
-	int? orderId;
-	String? orderName;
-	String? customerName;
-	String? salesmanName;
-	String? goods;
-	String? createData;
-	String? lastChangeData;
-	int? paymentSchedule;
-	String? totalPrices;
-	String? currencyType;
-	int? confirm;
-	int? stateID;
-	bool? adminConfirm;
+	int? orderId = 0;
+	String? orderName = '';
+	String? customerName = '';
+	String? salesmanName = '';
+	String? goods = '';
+	String? createData = '';
+	String? lastChangeData = '';
+	int? paymentSchedule = 0;
+	String? totalPrices = '';
+	String? currencyType = '';
+	int? confirm = 0;
+	int? stateID = 0;
+	bool? waitingEndConfirm = false;
+	bool? done = false;
+	bool? adminConfirm = false;
 
 	OrderRows();
 

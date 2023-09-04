@@ -979,6 +979,96 @@ class S {
       args: [],
     );
   }
+
+  /// `目前没有查到任何物流信息`
+  String get emptywuliu {
+    return Intl.message(
+      '目前没有查到任何物流信息',
+      name: 'emptywuliu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `订单已确认!`
+  String get orderConfirmed {
+    return Intl.message(
+      '订单已确认!',
+      name: 'orderConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `确认结束订单`
+  String get querenjieshu {
+    return Intl.message(
+      '确认结束订单',
+      name: 'querenjieshu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `订单已结束`
+  String get dingdanyijieshu {
+    return Intl.message(
+      '订单已结束',
+      name: 'dingdanyijieshu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `如有异议，请在此输入!`
+  String get ruyouyiyi {
+    return Intl.message(
+      '如有异议，请在此输入!',
+      name: 'ruyouyiyi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提交异议`
+  String get tijiaoyiyi {
+    return Intl.message(
+      '提交异议',
+      name: 'tijiaoyiyi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `已成功提交异议!`
+  String get yichenggongtijiaoyiyi {
+    return Intl.message(
+      '已成功提交异议!',
+      name: 'yichenggongtijiaoyiyi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `提交失败!`
+  String get tijiaoshibai {
+    return Intl.message(
+      '提交失败!',
+      name: 'tijiaoshibai',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save video`
+  String get saveVideo {
+    return Intl.message(
+      'Save video',
+      name: 'saveVideo',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

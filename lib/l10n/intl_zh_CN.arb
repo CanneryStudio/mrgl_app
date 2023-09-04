@@ -91,5 +91,14 @@
   "shangpinxinxi": "数量:{good.amount}\n单价:{good.unitPrice}{widget.order.currencyType}\n总价:{good.totalPrice}{widget.order.currencyType}",
   "goodNameGoodname": "商品名称: ${good.name!}",
   "wuliuzhuangtai": "物流状态",
-  "zhuangtaimiaoshu": "状态描述"
+  "zhuangtaimiaoshu": "状态描述",
+  "emptywuliu": "目前没有查到任何物流信息",
+  "orderConfirmed": "订单已确认!",
+  "querenjieshu": "确认结束订单",
+  "dingdanyijieshu": "订单已结束",
+  "ruyouyiyi": "如有异议，请在此输入!",
+  "tijiaoyiyi": "提交异议",
+  "yichenggongtijiaoyiyi": "已成功提交异议!",
+  "tijiaoshibai": "提交失败!",
+  "saveVideo": "Save video"
 }

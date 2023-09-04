@@ -52,7 +52,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Order Details"),
         "dingdanxinxi":
             MessageLookupByLibrary.simpleMessage("Order Information"),
+        "dingdanyijieshu":
+            MessageLookupByLibrary.simpleMessage("The order has ended"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "emptywuliu": MessageLookupByLibrary.simpleMessage(
+            "There\'s no logistical information available at this time"),
         "fahuodi": MessageLookupByLibrary.simpleMessage("Origin: "),
         "fuwurexian": MessageLookupByLibrary.simpleMessage("Service Hotline"),
         "gangwei": MessageLookupByLibrary.simpleMessage("Position"),
@@ -74,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicheng": MessageLookupByLibrary.simpleMessage("Nickname"),
         "ninquedingyaotuichumang": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to log out?"),
+        "orderConfirmed":
+            MessageLookupByLibrary.simpleMessage("Order confirmed!"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "putongjuese": MessageLookupByLibrary.simpleMessage("Regular Role"),
         "qingshurujiumima":
@@ -94,7 +100,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter email"),
         "queding": MessageLookupByLibrary.simpleMessage("Confirm"),
         "querendingdan": MessageLookupByLibrary.simpleMessage("Confirm Order"),
+        "querenjieshu":
+            MessageLookupByLibrary.simpleMessage("Confirm to close the order"),
         "quxiao": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "ruyouyiyi": MessageLookupByLibrary.simpleMessage(
+            "If you have any objections, please enter them here!"),
+        "saveVideo": MessageLookupByLibrary.simpleMessage("Save video"),
         "settings": MessageLookupByLibrary.simpleMessage("App Settings"),
         "shangpin": MessageLookupByLibrary.simpleMessage("Product: "),
         "shangpinxinxi": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +113,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "shifouqueren": MessageLookupByLibrary.simpleMessage("Confirmation: "),
         "shoujihaoma": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "tijiao": MessageLookupByLibrary.simpleMessage("Submit"),
+        "tijiaoshibai": MessageLookupByLibrary.simpleMessage("Commit failed!"),
+        "tijiaoyiyi":
+            MessageLookupByLibrary.simpleMessage("Submit an objection"),
         "tongyijidaibiaodenglu": MessageLookupByLibrary.simpleMessage(
             "Logging in represents agreement with"),
         "topLoginText": MessageLookupByLibrary.simpleMessage("Morigele"),
@@ -130,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Profile Picture"),
         "xiugaiziliao":
             MessageLookupByLibrary.simpleMessage("Edit Information"),
+        "yichenggongtijiaoyiyi": MessageLookupByLibrary.simpleMessage(
+            "Objection successfully submitted!"),
         "yididamudidi":
             MessageLookupByLibrary.simpleMessage("Arrived at Destination"),
         "yifukuan": MessageLookupByLibrary.simpleMessage("Paid"),

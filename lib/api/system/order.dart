@@ -15,3 +15,7 @@ await DioRequest().httpRequest(
 var submitOrder = (data) async =>
 await DioRequest().httpRequest(
     "/system/ordersmanager", true, "post", data: data);
+
+var endOrderByCustomer = (orderName) async =>
+await DioRequest().httpRequest(
+    "/system/ordersmanager/endOrderCustomer/$orderName", true, "post");

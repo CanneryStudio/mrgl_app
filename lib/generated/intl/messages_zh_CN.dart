@@ -41,7 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "dingdanliebiao": MessageLookupByLibrary.simpleMessage("订单列表"),
         "dingdanxiangqing": MessageLookupByLibrary.simpleMessage("订单详情"),
         "dingdanxinxi": MessageLookupByLibrary.simpleMessage("订单信息"),
+        "dingdanyijieshu": MessageLookupByLibrary.simpleMessage("订单已结束"),
         "editProfile": MessageLookupByLibrary.simpleMessage("编辑资料"),
+        "emptywuliu": MessageLookupByLibrary.simpleMessage("目前没有查到任何物流信息"),
         "fahuodi": MessageLookupByLibrary.simpleMessage("发货地:"),
         "fuwurexian": MessageLookupByLibrary.simpleMessage("服务热线"),
         "gangwei": MessageLookupByLibrary.simpleMessage("岗位"),
@@ -60,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicheng": MessageLookupByLibrary.simpleMessage("昵称"),
         "ninquedingyaotuichumang":
             MessageLookupByLibrary.simpleMessage("您确定要退出吗？"),
+        "orderConfirmed": MessageLookupByLibrary.simpleMessage("订单已确认!"),
         "password": MessageLookupByLibrary.simpleMessage("密码"),
         "putongjuese": MessageLookupByLibrary.simpleMessage("普通角色"),
         "qingshurujiumima": MessageLookupByLibrary.simpleMessage("请输入旧密码"),
@@ -72,7 +75,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "qingshuruyouxiang": MessageLookupByLibrary.simpleMessage("请输入邮箱"),
         "queding": MessageLookupByLibrary.simpleMessage("确定"),
         "querendingdan": MessageLookupByLibrary.simpleMessage("确认订单"),
+        "querenjieshu": MessageLookupByLibrary.simpleMessage("确认结束订单"),
         "quxiao": MessageLookupByLibrary.simpleMessage("取消"),
+        "ruyouyiyi": MessageLookupByLibrary.simpleMessage("如有异议，请在此输入!"),
+        "saveVideo": MessageLookupByLibrary.simpleMessage("Save video"),
         "settings": MessageLookupByLibrary.simpleMessage("应用设置"),
         "shangpin": MessageLookupByLibrary.simpleMessage("商品："),
         "shangpinxinxi": MessageLookupByLibrary.simpleMessage(
@@ -80,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shifouqueren": MessageLookupByLibrary.simpleMessage("是否确认："),
         "shoujihaoma": MessageLookupByLibrary.simpleMessage("手机号码"),
         "tijiao": MessageLookupByLibrary.simpleMessage("提交"),
+        "tijiaoshibai": MessageLookupByLibrary.simpleMessage("提交失败!"),
+        "tijiaoyiyi": MessageLookupByLibrary.simpleMessage("提交异议"),
         "tongyijidaibiaodenglu":
             MessageLookupByLibrary.simpleMessage("登录即代表同意"),
         "topLoginText": MessageLookupByLibrary.simpleMessage("莫日格勒"),
@@ -103,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "xiugaimima": MessageLookupByLibrary.simpleMessage("修改密码"),
         "xiugaitouxiang": MessageLookupByLibrary.simpleMessage("修改头像"),
         "xiugaiziliao": MessageLookupByLibrary.simpleMessage("修改资料"),
+        "yichenggongtijiaoyiyi":
+            MessageLookupByLibrary.simpleMessage("已成功提交异议!"),
         "yididamudidi": MessageLookupByLibrary.simpleMessage("已抵达目的地"),
         "yifukuan": MessageLookupByLibrary.simpleMessage("已付款"),
         "yingyongshezhi": MessageLookupByLibrary.simpleMessage("应用设置"),

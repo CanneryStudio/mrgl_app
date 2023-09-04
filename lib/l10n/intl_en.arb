@@ -91,5 +91,14 @@
   "shangpinxinxi": "Amount: {good.amount}\nUnit Price: {good.unitPrice} {widget.order.currencyType}\nTotal Price: {good.totalPrice} {widget.order.currencyType}",
   "goodNameGoodname": "Product Name: ${good.name!}",
   "wuliuzhuangtai": "Logistics Status",
-  "zhuangtaimiaoshu": "Status Description"
+  "zhuangtaimiaoshu": "Status Description",
+  "emptywuliu": "There's no logistical information available at this time",
+  "orderConfirmed": "Order confirmed!",
+  "querenjieshu": "Confirm to close the order",
+  "dingdanyijieshu": "The order has ended",
+  "ruyouyiyi": "If you have any objections, please enter them here!",
+  "tijiaoyiyi": "Submit an objection",
+  "yichenggongtijiaoyiyi": "Objection successfully submitted!",
+  "tijiaoshibai": "Commit failed!",
+  "saveVideo": "Save video"
 }

@@ -53,8 +53,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Детали заказа"),
         "dingdanxinxi":
             MessageLookupByLibrary.simpleMessage("Информация о заказе"),
+        "dingdanyijieshu": MessageLookupByLibrary.simpleMessage("Заказ закрыт"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("Редактировать профиль"),
+        "emptywuliu": MessageLookupByLibrary.simpleMessage(
+            "Информация о логистике пока не найдена"),
         "fahuodi": MessageLookupByLibrary.simpleMessage("Место отправления:"),
         "fuwurexian": MessageLookupByLibrary.simpleMessage(
             "Горячая линия службы поддержки"),
@@ -76,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicheng": MessageLookupByLibrary.simpleMessage("Никнейм"),
         "ninquedingyaotuichumang": MessageLookupByLibrary.simpleMessage(
             "Вы уверены, что хотите выйти?"),
+        "orderConfirmed":
+            MessageLookupByLibrary.simpleMessage("Заказ подтвержден!"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "putongjuese": MessageLookupByLibrary.simpleMessage("Обычная роль"),
         "qingshurujiumima": MessageLookupByLibrary.simpleMessage(
@@ -96,7 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "queding": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "querendingdan":
             MessageLookupByLibrary.simpleMessage("Подтвердить заказ"),
+        "querenjieshu":
+            MessageLookupByLibrary.simpleMessage("Подтвердите закрытие ордера"),
         "quxiao": MessageLookupByLibrary.simpleMessage("Отмена"),
+        "ruyouyiyi": MessageLookupByLibrary.simpleMessage(
+            "Если у Вас есть какие-либо возражения, пожалуйста, укажите их здесь!"),
+        "saveVideo": MessageLookupByLibrary.simpleMessage("Save video"),
         "settings":
             MessageLookupByLibrary.simpleMessage("Настройки приложения"),
         "shangpin": MessageLookupByLibrary.simpleMessage("Товар:"),
@@ -106,6 +116,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Статус подтверждения:"),
         "shoujihaoma": MessageLookupByLibrary.simpleMessage("Номер телефона"),
         "tijiao": MessageLookupByLibrary.simpleMessage("Отправить"),
+        "tijiaoshibai": MessageLookupByLibrary.simpleMessage("Сбой фиксации!"),
+        "tijiaoyiyi":
+            MessageLookupByLibrary.simpleMessage("Представление возражений"),
         "tongyijidaibiaodenglu": MessageLookupByLibrary.simpleMessage(
             "Вход в систему означает согласие с"),
         "topLoginText": MessageLookupByLibrary.simpleMessage("Моригеле"),
@@ -138,6 +151,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Изменить аватар"),
         "xiugaiziliao":
             MessageLookupByLibrary.simpleMessage("Редактировать информацию"),
+        "yichenggongtijiaoyiyi":
+            MessageLookupByLibrary.simpleMessage("Возражение успешно подано!"),
         "yididamudidi":
             MessageLookupByLibrary.simpleMessage("Достигло места назначения"),
         "yifukuan": MessageLookupByLibrary.simpleMessage("Оплачен"),

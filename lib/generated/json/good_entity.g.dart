@@ -58,6 +58,11 @@ GoodGoods $GoodGoodsFromJson(Map<String, dynamic> json) {
   if (totalPrice != null) {
     goodGoods.totalPrice = totalPrice;
   }
+  final String? item_currency = jsonConvert.convert<String>(
+      json['item_currency']);
+  if (item_currency != null) {
+    goodGoods.item_currency = item_currency;
+  }
   return goodGoods;
 }
 
@@ -67,6 +72,7 @@ Map<String, dynamic> $GoodGoodsToJson(GoodGoods entity) {
   data['amount'] = entity.amount;
   data['unit_price'] = entity.unitPrice;
   data['total_price'] = entity.totalPrice;
+  data['item_currency'] = entity.item_currency;
   return data;
 }
 
@@ -76,11 +82,13 @@ extension GoodGoodsExtension on GoodGoods {
     int? amount,
     double? unitPrice,
     double? totalPrice,
+    String? item_currency,
   }) {
     return GoodGoods()
       ..name = name ?? this.name
       ..amount = amount ?? this.amount
       ..unitPrice = unitPrice ?? this.unitPrice
-      ..totalPrice = totalPrice ?? this.totalPrice;
+      ..totalPrice = totalPrice ?? this.totalPrice
+      ..item_currency = item_currency ?? this.item_currency;
   }
 }
