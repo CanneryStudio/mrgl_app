@@ -65,11 +65,13 @@ class DioRequest {
         SPUtil().clean();
         GetStorage().erase();
         Get.toNamed("/login");
+        Get.snackbar("Tips:", "You don't have permission!");
       }
       if ((response.data["code"] == 401)) {
         SPUtil().clean();
         GetStorage().erase();
         Get.offAll("/login");
+        Get.snackbar("Tips:", "You don't have permission!");
       }
       print("================== 响应数据 ==========================");
       print("code = ${response.statusCode}");

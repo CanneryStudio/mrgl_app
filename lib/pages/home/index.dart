@@ -756,7 +756,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 onPressed: () async {
                   var response =
                       await endOrderByCustomer(widget.order.orderId!);
-                  if (response.data['status'] == 200) {
+                  if (response.data["code"] == 200) {
                     Get.snackbar("Tips:", "订单已结束");
                     setState(() {
                       widget.order.paymentSchedule = 2;
